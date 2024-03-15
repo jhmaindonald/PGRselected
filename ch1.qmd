@@ -1,0 +1,247 @@
+---
+title: "Answers to Selected Chapter 1 Exercises"
+author: "John Maindonald"
+date: "`r Sys.Date()`"
+output: 
+  html_document: default
+  pdf_document:
+    includes:
+      in_header: "preamble.tex"
+    latex_engine: xelatex
+---
+
+```{css, echo=F}
+.colbox {
+  padding: 1em;
+  background: white;
+  color: black;
+  border: 2px solid orange;
+  border-radius: 10px;
+}
+.center {
+  text-align: left;
+}
+}
+
+```{r, echo=FALSE, include=FALSE}
+library(knitr)
+opts_chunk$set(fig.align='center', fig.show='hold', size="small", ps=10, 
+               comment=NA, strip.white = TRUE, out.width="80%", 
+                    tidy.opts = list(replace.assign=FALSE))
+```
+
+<!-- ```{r setup, cache=FALSE, echo=FALSE} -->
+<!-- Hmisc::knitrSet(basename="intro", fig.path="figs/g", w=7, h=7) -->
+<!-- oldopt <- options(digits=4, formatR.arrow=FALSE, width=70, scipen=999) -->
+<!-- knitr::render_listings() -->
+<!-- library(knitr) -->
+<!-- opts_chunk$set(cache.path='cache-', fig.align='center', fig.show='hold', size="small", ps=10, out.width="0.8\\textwidth", comment=NA) -->
+<!-- opts_chunk[['set']](cache.path='cache-', out.width="0.8\\textwidth",  -->
+<!--                     fig.align="center", -->
+<!--                     fig.show='hold', size="small", ps=10, strip.white = TRUE, -->
+<!--                     out.width="0.8\\textwidth", comment=NA, -->
+<!--                     width=70, comment=NA, tidy.opts = list(replace.assign=FALSE)) -->
+<!-- ``` -->
+
+
+library(DAAG)
+```
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 1
+:::
+The data frame DAAG::orings has details of damage that had occurred in US space shuttle launches prior to the disastrous Challenger launch of January 28, 1986. Observations in rows 1, 2, 4, 11, 13, and 18 were shown in the pre-launch charts used in deciding whether to proceed with the launch, with remaining rows omitted.
+
+Compare plots of Total incidents against Temperature: (i) including only the observations shown in the pre-launch charts; and (ii) using all rows of data. What did the full set of data strongly suggest that was less clear from the plot that showed only the selected rows?
+:::
+
+Use the following to extract rows that hold the data that were presented in the pre-launch charts:
+
+```{r ex3, echo=TRUE, eval=TRUE, fig.width=6, fig.height=3.5}
+orings86 <- DAAG::orings[c(1,2,4,11,13,18), ]
+library(lattice)
+gph1 <- xyplot(Total ~ Temperature, data=orings86, pch=16)
+gph2 <- xyplot(Total ~ Temperature, data=DAAG::orings)
+c("Points in pre-launch charts"=gph1,"All Points" = gph2, y.same=TRUE)
+```
+
+Points are best shown with filled symbols in the first plot, and with open symbols in the second plot. (Why?)
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 7
+:::
+
+Plot a histogram of the `earconch` measurements for the `possum` data. The distribution should appear *bimodal* (two peaks). This is a simple indication of clustering, possibly due to sex differences. Obtain side-by-side boxplots of the male and female \verb!earconch! measurements. How do these measurement distributions differ? Can you predict what the corresponding histograms would look like? Plot them to check your answer.
+:::
+
+```{r ex7, echo=TRUE, eval=FALSE}
+possum <- DAAG::possum
+par(mfrow=c(1,2), mar=c(4.1,4.1,1.6,0.6))
+hist(possum$earconch, main="")
+boxplot(earconch ~ sex, data=possum, horizontal=TRUE)
+par(mfrow=c(1,1))
+```
+
+
+```{r fig.width=7, fig.height=3.5, echo=FALSE}
+<<ex7>>
+```
+
+The left panel shows a histogram of possum ear conch measurements.
+The right panel shows side by side boxplots of the measurements, one for
+each sex. A horizontal layout is often advantageous.
+
+Note the alternative to `boxplot()` that uses the *lattice* function `bwplot()`. Placing `sex` on the left of the graphics formula leads to horizontal boxplots.
+
+```{r, eval=FALSE}
+bwplot(sex ~ earconch, data=possum)
+```
+
+\noindent The following uses the *lattice* function \texttt{histogram()} to give side by side histograms:
+
+```{r histogram, fig.width=6, fig.height=3.5}
+histogram(~ earconch | sex, data=possum)
+```
+
+\paragraph{A comparison of  density plots may work better:}
+
+Density plots, in addition to avoiding what has to be a largely arbitrary choice of cutpoints, are easy to overlay.
+
+```{r, eval=TRUE}
+densityplot(~earconch, data=DAAG::possum, groups=sex, 
+            auto.key=list(columns=2))
+```
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 8
+:::
+
+For the data frame `ais` (*DAAG* package), draw graphs that show how the values of the hematological measures (red cell count, hemoglobin concentration, hematocrit, white cell count and plasma ferritin concentration) vary with the sport and sex of the athlete.
+:::
+
+The plots that follow show one possibility that gives a relatively compact presentation:
+
+```{r ex8, echo=FALSE, fig.height=7}
+gphrcc <- bwplot(sport ~ rcc | sex, data=DAAG::ais)
+gphwcc <- bwplot(sport ~ wcc | sex, data=DAAG::ais)
+gphhc <- bwplot(sport ~ hc | sex, data=DAAG::ais)
+gphhg <- bwplot(sport ~ hg | sex, data=DAAG::ais)
+gphferr <- bwplot(sport ~ ferr | sex, data=DAAG::ais)
+c("Red cell count"=gphrcc, 
+  "White cell count"=gphwcc, 
+  "Hematocrit, %"=gphhc, 
+  "Hemaglobin"=gphhg,
+  "Plasma ferritins"=gphferr,
+  layout=c(2,3,2))
+```
+
+The final 2 in layout=c(2,3,2) spills the panels for the final two measures over onto a second page.
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 14
+:::
+
+An experimenter intends to arrange experimental plots in four blocks. In each block there are seven plots, one for each of seven treatments. Use the function \verb!sample()! to find four random permutations of the numbers 1 to 7 that will be used, one set in each block, to make the assignments of treatments to plots.
+:::
+
+```{r ex14}
+for(i in 1:4)print(sample(1:7))
+## Store results in the columns of a matrix
+## The following is mildly cryptic
+sapply(1:4, function(x)sample(1:7))  
+```
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 15
+:::
+
+The following data represent the total number of aberrant crypt foci (abnormal growths in the colon) observed in 7 rats that had been administered a single dose of the carcinogen azoxymethane and sacrificed after six weeks:
+
+```         
+87 53 72 90 78 85 83
+```
+
+Enter these data and compute their sample mean and variance. Is the Poisson model appropriate for these data. To investigate how the sample variance and sample mean differ under the Poisson assumption, repeat the following simulation experiment several times:
+
+```{r, eval=FALSE}
+x <- rpois(7, 78.3)
+mean(x); var(x)
+```
+:::
+
+```{r, echo=TRUE}
+y <- c(87, 53, 72, 90, 78, 85, 83)
+c(mean=mean(y), variance=var(y))
+```
+
+Then try
+
+```{r, echo=TRUE}
+x <- rpois(7, 78.3)
+c(mean=mean(x), variance=var(x))
+```
+
+It is unusual to get as big a difference between the mean and the variance as that observed for these data, making it doubtful that these data are from a Poisson distribution.
+
+
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 21
+:::
+The following code generates random normal numbers with a sequential dependence structure:
+```{r, ex21, eval=FALSE}
+y <- rnorm(51) 
+ydep <- y[-1] + y[-51] 
+acf(y, main='A: iid normal values') 
+acf(ydep, main='B: Sequentially dependent')
+```
+
+Repeat this several times. There should be no consistent pattern in the acf plot for different iid (independently and identically distributed)
+random samples `y`, and a fairly consistent pattern in the acf plot for `ydep` that reflects the correlation that is introduced by adding to each value of y the next value in the sequence.
+:::
+
+The following should be repeated several times:
+
+
+```{r ex21, fig.width=5, fig.height=3.5, fig.show='hold', echo=FALSE, out.width='48%'}
+```
+
+In most plots, a lag 1 autocorrelation that is outside of the error bounds shown by the dashed horizontal lines should be evident in the second plot.
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 22
+:::
+
+Assuming that the variability in egg length in the cuckoo eggs data is the same for all host birds, obtain an estimate of the pooled standard deviation as a way of summarizing this variability. [Hint: Remember to divide the appropriate sums of squares by the number of degrees of freedom remaining after estimating the six different means.]
+:::
+
+```{r ex22, echo=TRUE}
+cuckoos <- DAAG::cuckoos
+sapply(cuckoos, is.factor)   # Check which columns are factors
+specnam <- levels(cuckoos$species)
+ss <- 0
+ndf <- 0
+for(nam in specnam){
+  lgth <- cuckoos$length[cuckoos$species==nam]
+  ss <- ss + sum((lgth - mean(lgth))^2)
+  ndf <- ndf + length(lgth) - 1
+}
+sqrt(ss/ndf)
+```
+
+A more cryptic solution is:
+
+```{r echo=TRUE, results='hide'}
+diffs <- unlist(sapply(split(cuckoos$length, cuckoos$species), 
+                function(x)x-mean(x)))
+df <- unlist(sapply(split(cuckoos$length, cuckoos$species), 
+             function(x)length(x) - 1))
+sqrt(sum(diffs^2)/sum(df))
+```

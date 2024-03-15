@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.549">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="John Maindonald">
+<meta name="dcterms.date" content="2024-03-15">
+
+<title>Answers to selected exercises - 2&nbsp; Answers to Selected Chapter 2 Exercises</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./summary.html" rel="next">
+<link href="./ch1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch2.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 2 Exercises</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Answers to selected exercises</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Preface</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 1 Exercises</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ch2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 2 Exercises</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 2 Exercises</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>John Maindonald </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 15, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<div class="cell">
+<style type="text/css">
+.colbox {
+  padding: 1em;
+  background: white;
+  color: black;
+  border: 2px solid orange;
+  border-radius: 10px;
+}
+.center {
+  text-align: left;
+}
+}
+</style>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DAAG)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="colbox">
+<div data-latex="">
+<p>Exercise 2</p>
+</div>
+<p>The table <code>UCBAdmissions</code> was discussed in Subsection 2.2.1. The following gives a table that adds the 2 <span class="math inline">\(\times\)</span> 2 tables of admission data over all departments:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">## UCBAdmissions is in the datasets package</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="do">## For each combination of margins 1 and 2, calculate the sum</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>UCBtotal <span class="ot">&lt;-</span> <span class="fu">apply</span>(UCBAdmissions, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What are the names of the two dimensions of this table?</p>
+<ol type="a">
+<li>From the table <code>UCBAdmissions</code>, create mosaic plots for each faculty separately. (If necessary refer to the code given in the help page for <code>UCBAdmissions</code>.)</li>
+</ol>
+<ul>
+<li>Compare the information in the table <code>UCBtotal</code> with the result from applying the function <code>mantelhaen.test()</code> to the table <code>UCBAdmissions</code>. Compare the two sets of results, and comment on the difference.<br>
+</li>
+</ul>
+<ol start="2" type="a">
+<li>The Mantel–Haenzel test is valid only if the male to female odds ratio for admission is similar across departments. The following code calculates the relevant odds ratios:<br>
+</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(UCBAdmissions, <span class="dv">3</span>, <span class="cf">function</span>(x)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>      (x[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">*</span>x[<span class="dv">2</span>,<span class="dv">2</span>])<span class="sc">/</span>(x[<span class="dv">1</span>,<span class="dv">2</span>]<span class="sc">*</span>x[<span class="dv">2</span>,<span class="dv">1</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Is the odds ratio consistent across departments? Which department(s) stand(s) out as different? What is the nature of the difference? \end{enumerate} [For further information on the Mantel-Haenszel test, see the help page for <code>mantelhaen.test</code>.]</p>
+</div>
+<p>Use <code>dimnames(UCBAdmissions)[1:2]</code> to get the names of the first two dimensions, which are <code>Admit</code> and <code>Gender</code>.</p>
+<ol type="a">
+<li>First note the code needed to give a mosaic plot for the totals; the question does not ask for this. There is an excess of males and a deficit of females in the <code>Admitted</code> category.</li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="fl">3.1</span>,<span class="fl">3.1</span>,<span class="fl">2.6</span>,<span class="fl">1.1</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>UCBtotal <span class="ot">&lt;-</span> <span class="fu">apply</span>(UCBAdmissions, <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), sum)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(UCBtotal,<span class="at">col=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now obtain the mosaic plots for each department separately.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>oldpar <span class="ot">&lt;-</span> <span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="fl">3.1</span>,<span class="fl">3.1</span>,<span class="fl">2.6</span>,<span class="dv">1</span>), <span class="at">cex.main=</span><span class="fl">0.8</span>)           </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mosaicplot</span>(UCBAdmissions[,,i], <span class="at">xlab =</span> <span class="st">"Admit"</span>, <span class="at">ylab =</span> <span class="st">"Sex"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"Department"</span>, LETTERS[i]), <span class="at">color=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch2_files/figure-html/ex2a-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Mosaic plots are shown for each department separately. The greatest difference in the proportions in the two vertical columns is for Department A.</p>
+<ol start="2" type="a">
+<li></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">apply</span>(UCBAdmissions, <span class="dv">3</span>, <span class="cf">function</span>(x)(x[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">*</span>x[<span class="dv">2</span>,<span class="dv">2</span>])<span class="sc">/</span>(x[<span class="dv">1</span>,<span class="dv">2</span>]<span class="sc">*</span>x[<span class="dv">2</span>,<span class="dv">1</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        A         B         C         D         E         F 
+0.3492120 0.8025007 1.1330596 0.9212838 1.2216312 0.8278727 </code></pre>
+</div>
+</div>
+<p>The odds ratio (male to female admissions) is much the lowest for Department A.</p>
+<div class="colbox">
+<div data-latex="">
+<p>Exercise 3</p>
+</div>
+<p>The following fictitious data is designed to illustrate issues for combining data across tables.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>       Engineering        Sociology         Sum       
+              Male Female      Male Female Male Female
+                                                      
+Admit           30     10        15     30   45     40
+Deny            30     10         5     10   35     20</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       Engineering        Sociology         Sum       
+              Male Female      Male Female Male Female
+                                                      
+Admit           30     20        10     20   40     40
+Deny            30     10         5     25   35     35</code></pre>
+</div>
+</div>
+<p>The third dimension in each table is faculty, as required for using faculty as a stratification variable for the Mantel–Haenzel test. From the help page for <code>mantelhaen.test()</code>, extract and enter the code for the function <code>woolf()</code>. Apply the function <code>woolf()</code>, followed by the function <code>mantelhaen.test()</code>, to the data of each of Tables A and B. Explain, in words, the meaning of each of the outputs. Then apply the Mantel–Haenzel test to each of these tables.</p>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tabA <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">30</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">5</span>, <span class="dv">30</span>, <span class="dv">10</span>),</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">dim=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>tabB <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">30</span>, <span class="dv">20</span>, <span class="dv">10</span>, <span class="dv">10</span>, <span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">25</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">dim=</span><span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dimnames</span>(tabA) <span class="ot">&lt;-</span> <span class="fu">dimnames</span>(tabB) <span class="ot">&lt;-</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(<span class="fu">c</span>(<span class="st">'Admit'</span>,<span class="st">'Deny'</span>), <span class="fu">c</span>(<span class="st">'Male'</span>,<span class="st">'Female'</span>), </span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>       <span class="fu">c</span>(<span class="st">"Engineering"</span>,<span class="st">'Sociology'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>     woolf <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>       x <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> <span class="dv">2</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>       k <span class="ot">&lt;-</span> <span class="fu">dim</span>(x)[<span class="dv">3</span>]</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>       or <span class="ot">&lt;-</span> <span class="fu">apply</span>(x, <span class="dv">3</span>, <span class="cf">function</span>(x) (x[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">*</span>x[<span class="dv">2</span>,<span class="dv">2</span>])<span class="sc">/</span>(x[<span class="dv">1</span>,<span class="dv">2</span>]<span class="sc">*</span>x[<span class="dv">2</span>,<span class="dv">1</span>]))</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>       w <span class="ot">&lt;-</span>  <span class="fu">apply</span>(x, <span class="dv">3</span>, <span class="cf">function</span>(x) <span class="dv">1</span> <span class="sc">/</span> <span class="fu">sum</span>(<span class="dv">1</span> <span class="sc">/</span> x))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>       <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pchisq</span>(<span class="fu">sum</span>(w <span class="sc">*</span> (<span class="fu">log</span>(or) <span class="sc">-</span> <span class="fu">weighted.mean</span>(<span class="fu">log</span>(or), w)) <span class="sc">^</span> <span class="dv">2</span>), k <span class="sc">-</span> <span class="dv">1</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>     }           </span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="fu">woolf</span>(tabA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9695992</code></pre>
+</div>
+</div>
+<p>The assumption of homogeneity (equal odds ratios for males and females in each of the two departments) appears acceptable.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">woolf</span>(tabB)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.04302033</code></pre>
+</div>
+</div>
+<p>There is evidence of department-specific biases.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mantelhaen.test</span>(tabA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Mantel-Haenszel chi-squared test without continuity correction
+
+data:  tabA
+Mantel-Haenszel X-squared = 0, df = 1, p-value = 1
+alternative hypothesis: true common odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.4565826 2.1901841
+sample estimates:
+common odds ratio 
+                1 </code></pre>
+</div>
+</div>
+<p>The estimate of the common odds ratio is 1.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mantelhaen.test</span>(tabB)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Mantel-Haenszel chi-squared test with continuity correction
+
+data:  tabB
+Mantel-Haenszel X-squared = 0.014147, df = 1, p-value = 0.9053
+alternative hypothesis: true common odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.448071 1.807749
+sample estimates:
+common odds ratio 
+              0.9 </code></pre>
+</div>
+</div>
+<p>The common odds ratio is given as 0.9. However, because the odds ratio is not homogeneous within each of the two departments, this overall figure is, depending on its intended use, misleading.</p>
+<div class="colbox">
+<div data-latex="">
+<p>Exercise 5</p>
+</div>
+<p>For constructing bootstrap confidence intervals for the correlation coefficient, it is advisable to work with the Fisher <span class="math inline">\(z\)</span>-transformation of the correlation coefficient. The following lines of R code show how to obtain a bootstrap confidence interval for the <span class="math inline">\(z\)</span>-transformed correlation between <code>chest</code> and <code>belly</code> in the <code>possum</code> data frame. The last step of the procedure is to apply the inverse of the <span class="math inline">\(z\)</span>-transformation to the confidence interval to return it to the original scale. Run the following code and compare the resulting interval with the one computed without transformation. Is the <span class="math inline">\(z\)</span>-transform necessary here?</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>z.transform <span class="ot">&lt;-</span> <span class="cf">function</span>(r) .<span class="dv">5</span><span class="sc">*</span><span class="fu">log</span>((<span class="dv">1</span><span class="sc">+</span>r)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>r))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>z.inverse <span class="ot">&lt;-</span> <span class="cf">function</span>(z) (<span class="fu">exp</span>(<span class="dv">2</span><span class="sc">*</span>z)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">/</span>(<span class="fu">exp</span>(<span class="dv">2</span><span class="sc">*</span>z)<span class="sc">+</span><span class="dv">1</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>possum.fun <span class="ot">&lt;-</span> <span class="cf">function</span>(data, indices) {</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  chest <span class="ot">&lt;-</span> data<span class="sc">$</span>chest[indices]</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  belly <span class="ot">&lt;-</span> data<span class="sc">$</span>belly[indices]</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">z.transform</span>(<span class="fu">cor</span>(belly, chest))}</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>possum.boot <span class="ot">&lt;-</span> <span class="fu">boot</span>(possum, possum.fun, <span class="at">R=</span><span class="dv">999</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">z.inverse</span>(<span class="fu">boot.ci</span>(possum.boot, <span class="at">type=</span><span class="st">"perc"</span>)<span class="sc">$</span>percent[<span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>])</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># See help(bootci.object).  The 4th and 5th elements of </span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># the percent list element hold the interval endpoints.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(boot))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4795131 0.7076292</code></pre>
+</div>
+</div>
+<div class="colbox">
+<div data-latex="">
+<p>Exercise 6</p>
+</div>
+<p>Use the function <code>rexp()</code> to simulate 100 exponential random numbers with rate .2. Obtain a density plot for the observations. Find the sample mean of the observations. Compare with the result that would be obtained using the normal approximation, i.e., <span class="math inline">\(pi/(2*n)\)</span>.</p>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch2_files/figure-html/ex6-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The density plot is for 100 random values from an exponential distribution with <code>rate = 0.2</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Code</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">100</span>, .<span class="dv">2</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(z, <span class="at">from=</span><span class="dv">0</span>), <span class="at">main=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Notice the use of the argument <code>from=0</code>, to prevent <code>density()</code> from giving a positive density estimate to negative values.</p>
+<p>Compare <code>mean(z)</code> = 5.26 with 1/0.2 = 5.</p>
+<div class="colbox">
+<div data-latex="">
+<p>Exercise 7</p>
+</div>
+<p>Low doses of the insecticide toxaphene may cause weight gain in rats. A sample of 20 rats are given toxaphene in their diet, while a control group of 8 rats are not given toxaphene. Assume further that weight gain among the treated rats is normally distributed with a mean of 60g and standard deviation 30g, while weight gain among the control rats is normally distributed with a mean of 10g and a standard deviation of 50g. Using simulation, compare confidence intervals for the difference in mean weight gain, using the pooled variance estimate and the Welch approximation. Which type of interval is correct more often?</p>
+<p>Repeat the simulation experiment under the assumption that the standard deviations are 40g for both samples. Is there a difference between the two types of intervals now? Hint: Is one of the methods giving systematically larger confidence intervals? Which type of interval do you think is best?</p>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="st">"Welch.pooled.comparison"</span> <span class="ot">&lt;-</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(<span class="at">n1=</span><span class="dv">20</span>, <span class="at">n2=</span><span class="dv">8</span>, <span class="at">mean1=</span><span class="dv">60</span>, <span class="at">mean2=</span><span class="dv">10</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd1=</span><span class="dv">30</span>, <span class="at">sd2=</span><span class="dv">50</span>, <span class="at">nsim=</span><span class="dv">1000</span>) {</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>    Welch.count <span class="ot">&lt;-</span> <span class="fu">logical</span>(nsim)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    pooled.count <span class="ot">&lt;-</span> <span class="fu">logical</span>(nsim)</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    Welch.length <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nsim)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    pooled.length <span class="ot">&lt;-</span> <span class="fu">numeric</span>(nsim)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    mean.diff <span class="ot">&lt;-</span> mean1<span class="sc">-</span>mean2</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>        x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n1, <span class="at">mean=</span>mean1, <span class="at">sd=</span>sd1)</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>        y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n2, <span class="at">mean=</span>mean2, <span class="at">sd=</span>sd2)</span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>        t1conf.int <span class="ot">&lt;-</span> <span class="fu">t.test</span>(x, y)<span class="sc">$</span>conf.int</span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>        t2conf.int <span class="ot">&lt;-</span> <span class="fu">t.test</span>(x, y, <span class="at">var.equal=</span><span class="cn">TRUE</span>)<span class="sc">$</span>conf.int</span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>        t1correct <span class="ot">&lt;-</span> (t1conf.int[<span class="dv">1</span>] <span class="sc">&lt;</span> mean.diff) <span class="sc">&amp;</span> (t1conf.int[<span class="dv">2</span>] <span class="sc">&gt;</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>            mean.diff)</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a>        t2correct <span class="ot">&lt;-</span> (t2conf.int[<span class="dv">1</span>] <span class="sc">&lt;</span> mean.diff) <span class="sc">&amp;</span> (t2conf.int[<span class="dv">2</span>] <span class="sc">&gt;</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a>            mean.diff)</span>
+<span id="cb23-18"><a href="#cb23-18" aria-hidden="true" tabindex="-1"></a>        Welch.count[i] <span class="ot">&lt;-</span> t1correct</span>
+<span id="cb23-19"><a href="#cb23-19" aria-hidden="true" tabindex="-1"></a>        pooled.count[i] <span class="ot">&lt;-</span> t2correct</span>
+<span id="cb23-20"><a href="#cb23-20" aria-hidden="true" tabindex="-1"></a>        Welch.length[i] <span class="ot">&lt;-</span> <span class="fu">diff</span>(t1conf.int)</span>
+<span id="cb23-21"><a href="#cb23-21" aria-hidden="true" tabindex="-1"></a>        pooled.length[i] <span class="ot">&lt;-</span> <span class="fu">diff</span>(t2conf.int)</span>
+<span id="cb23-22"><a href="#cb23-22" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb23-23"><a href="#cb23-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(<span class="st">"Welch.proportion.correct"</span><span class="ot">=</span><span class="fu">mean</span>(Welch.count),</span>
+<span id="cb23-24"><a href="#cb23-24" aria-hidden="true" tabindex="-1"></a>           <span class="st">"pooled.proportion.correct"</span><span class="ot">=</span><span class="fu">mean</span>(pooled.count),</span>
+<span id="cb23-25"><a href="#cb23-25" aria-hidden="true" tabindex="-1"></a>           <span class="st">"Welch.length.avg"</span> <span class="ot">=</span> <span class="fu">mean</span>(Welch.length),</span>
+<span id="cb23-26"><a href="#cb23-26" aria-hidden="true" tabindex="-1"></a>           <span class="st">"pooled.length.avg"</span> <span class="ot">=</span> <span class="fu">mean</span>(pooled.length))</span>
+<span id="cb23-27"><a href="#cb23-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="fu">Welch.pooled.comparison</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Welch.proportion.correct pooled.proportion.correct          Welch.length.avg 
+                  0.94600                   0.89000                  83.60467 
+        pooled.length.avg 
+                 62.33582 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Welch.pooled.comparison</span>(<span class="at">sd1=</span><span class="dv">40</span>, <span class="at">sd2=</span><span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> Welch.proportion.correct pooled.proportion.correct          Welch.length.avg 
+                  0.94900                   0.94800                  70.64294 
+        pooled.length.avg 
+                 68.09172 </code></pre>
+</div>
+</div>
+<div class="colbox">
+<div data-latex="">
+<p>Exercise 8</p>
+</div>
+<p>*Experiment with the <code>DAAG::pair65</code> example and plot various views of the likelihood function, either as a surface using the <code>persp()</code> function or as one-dimensional profiles using the <code>curve()</code> function. Is there a single maximizer: Where does it occur?</p>
+</div>
+<p>First, check the mean and the SD.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">with</span>(pair65, heated<span class="sc">-</span>ambient)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 19  8  4  1  6 10  6 -3  6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">with</span>(pair65, heated<span class="sc">-</span>ambient))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.333333</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(<span class="fu">with</span>(pair65, heated<span class="sc">-</span>ambient))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.103278</code></pre>
+</div>
+</div>
+<p>Now create and use a function that calculates the likelihood, given mu and sigma</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>funlik <span class="ot">&lt;-</span> <span class="cf">function</span>(mu, sigma, <span class="at">x=</span><span class="fu">with</span>(pair65, heated<span class="sc">-</span>ambient))</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">prod</span>(<span class="fu">dnorm</span>(x, mu, sigma))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, calculate a vector of values of mu, and a vector of values of sigma</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>muval <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">2</span>, <span class="at">to=</span><span class="dv">12</span>, <span class="at">by=</span><span class="fl">0.5</span>)     <span class="co"># Values about mu=6.33</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>sigval <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">1</span>, <span class="at">to=</span><span class="dv">15</span>, <span class="at">by=</span><span class="fl">0.5</span>)    <span class="co"># Values about mu=6.10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now calculate an array of loglikelihoods</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>loglikArray <span class="ot">&lt;-</span> <span class="cf">function</span>(mu, sigma, <span class="at">d=</span><span class="fu">with</span>(pair65, heated<span class="sc">-</span>ambient)){</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  xx <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">0</span>, <span class="at">nrow=</span><span class="fu">length</span>(mu), <span class="at">ncol=</span><span class="fu">length</span>(sigma))</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq</span>(<span class="at">along=</span>sigma)) <span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq</span>(<span class="at">along=</span>mu))</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    xx[i,j] <span class="ot">&lt;-</span> <span class="fu">log</span>(<span class="fu">funlik</span>(mu[i], sigma[j], d))</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  xx</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>loglik <span class="ot">&lt;-</span> <span class="fu">loglikArray</span>(<span class="at">mu=</span>muval, <span class="at">sigma=</span>sigval)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Panel B shows a wider range of values of <code>mu</code>, and a narrower range of values of <code>sigma</code>, than in Panel B:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(<span class="at">x=</span>muval, <span class="at">y=</span>sigval, loglik, <span class="at">main=</span><span class="st">"A: Initial choice of value ranges"</span>)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>muval <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="sc">-</span><span class="dv">1</span>, <span class="at">to=</span><span class="dv">14</span>, <span class="at">by=</span><span class="fl">0.5</span>)</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>sigval <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="at">from=</span><span class="dv">3</span>, <span class="at">to=</span><span class="dv">12</span>, <span class="at">by=</span><span class="fl">0.2</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>loglik <span class="ot">&lt;-</span> <span class="fu">loglikArray</span>(<span class="at">mu=</span>muval, <span class="at">sigma=</span>sigval)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="fu">persp</span>(<span class="at">x=</span>muval, <span class="at">y=</span>sigval, loglik, <span class="at">main=</span><span class="st">"B: Adjusted value ranges"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch2_files/figure-html/persp2-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Try also</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="fu">contour</span>(muval, sigval, loglik)</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="fu">filled.contour</span>(muval, sigval, loglik)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch2_files/figure-html/contour-plots-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch2_files/figure-html/contour-plots-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="colbox">
+<div data-latex="">
+<p>Exercise 9</p>
+</div>
+<p>*Suppose the mean reaction time to a particular stimulus has been estimated in several previous studies, and it appears to be approximately normally distributed with mean 0.35 seconds with standard deviation 0.1 seconds. On the basis of 10 new observations, the mean reaction time is estimated to be 0.45 seconds with an estimated standard deviation of 0.15 seconds. Based on the sample information, what is the maximum likelihood estimator for the true mean reaction time? What is the Bayes’ estimate of the mean reaction time.</p>
+</div>
+<p>Following Section 2.9.1 the posterior density of the mean is normal with mean <span class="math display">\[ \frac{n \bar{y} + \mu_0 \sigma^2/\sigma_0^2}{n + \sigma^2/\sigma_0^2} \]</span> and variance <span class="math display">\[ \frac{\sigma^2}{n + \sigma^2/\sigma_0^2}\]</span> where, here <span class="math display">\[  \mu_0 = 0.35, \sigma_0 = 0.1, \quad \bar{y} = 0.45, n = 10,
+\sigma = 0.15 \]</span> Thus the posterior mean and variance of the mean are:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">c</span>(<span class="at">mean =</span> (<span class="dv">10</span> <span class="sc">*</span> <span class="fl">0.45</span> <span class="sc">+</span> <span class="fl">0.35</span> <span class="sc">*</span> <span class="fl">0.15</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">0.1</span><span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(<span class="dv">10</span> <span class="sc">+</span> <span class="fl">0.15</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">0.1</span><span class="sc">^</span><span class="dv">2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     mean 
+0.4316327 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">c</span>(<span class="at">variance =</span> <span class="fl">0.1</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>(<span class="dv">10</span> <span class="sc">+</span> <span class="fl">0.15</span><span class="sc">^</span><span class="dv">2</span><span class="sc">/</span><span class="fl">0.1</span><span class="sc">^</span><span class="dv">2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>    variance 
+0.0008163265 </code></pre>
+</div>
+</div>
+<p>The posterior mean is the Bayes’ estimate of the mean.</p>
+<div class="colbox">
+<div data-latex="">
+<p>Exercise 10</p>
+</div>
+<p>Use the robust regression function <code>MASS::rlm()</code> to fit lines to the data in <code>elastic1</code> and <code>elastic2</code>. Compare the results with those from use of <code>lm()</code>. Compare regression coefficients, standard errors of coefficients, and plots of residuals against fitted values.</p>
+</div>
+<p>The required regressions are as follows:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>e1.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(distance <span class="sc">~</span> stretch, <span class="at">data=</span>elastic1)</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>e2.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(distance <span class="sc">~</span> stretch, <span class="at">data=</span>elastic2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The fitted values and standard errors of the fits are then:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(e1.lm, <span class="at">se.fit=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$fit
+       1        2        3        4        5        6        7 
+183.1429 235.7143 196.2857 209.4286 170.0000 156.8571 222.5714 
+
+$se.fit
+[1]  6.586938 10.621119  5.891537  6.586938  8.331891 10.621119  8.331891
+
+$df
+[1] 5
+
+$residual.scale
+[1] 15.58754</code></pre>
+</div>
+</div>
+<p>The standard errors are somewhat smaller for the second data set than for the first</p>
+<p>The robust regression fits can be obtained as follows:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">suppressPackageStartupMessages</span>(<span class="fu">library</span>(MASS))</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>e1.rlm <span class="ot">&lt;-</span> <span class="fu">rlm</span>(distance <span class="sc">~</span> stretch, <span class="at">data=</span>elastic1)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>e2.rlm <span class="ot">&lt;-</span> <span class="fu">rlm</span>(distance <span class="sc">~</span> stretch, <span class="at">data=</span>elastic2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The residual plots can be obtained for <code>rlm()</code> in the same was as for . It may however be more insightful to overlay the <code>rlm()</code> plots on the <code>lm()</code> plots.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(e1.lm, <span class="at">which=</span><span class="dv">1</span>, <span class="at">add.smooth=</span><span class="cn">FALSE</span>)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">resid</span>(e1.rlm) <span class="sc">~</span> <span class="fu">fitted</span>(e1.rlm), <span class="at">col=</span><span class="dv">2</span>, <span class="at">pch=</span><span class="dv">2</span>)</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(e2.lm, <span class="at">which=</span><span class="dv">1</span>, <span class="at">add.smooth=</span><span class="cn">FALSE</span>)</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(<span class="fu">resid</span>(e2.rlm) <span class="sc">~</span> <span class="fu">fitted</span>(e2.rlm), <span class="at">col=</span><span class="dv">2</span>, <span class="at">pch=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch2_files/figure-html/resplot-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The figure shows overlaid plots of residuals versus fitted values, for the dataframes <code>elastic1</code> (left panel) and <code>elastic2</code> (right panel). Circles are for the <code>lm</code> fit and triangles for the <code>rlm</code> fit.</p>
+<p>For comparison purposes, we include residual plots for the ordinary regression fits. Note, in particular, how the robust regression has reduced the weight of the outlying observation in the first data set. The residual at that point is larger than it was using ordinary least-squares. The residual plots for the ordinary and robust fits are very similar for the second data set, since there are no outlying observations.</p>
+<p>As can be seen in the summaries below, the ordinary and robust fits for the first data set give quite different estimates of the slope and intercept. The robust fit is more in line with both sets of results obtained for the second data set.</p>
+<p>Note also the downward effect of the robust regression on the residual standard error. This is again due to the down-weighting of the outlying observation.</p>
+<p>For further details, run the following code:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(e1.rlm)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(e1.lm)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(e2.rlm)</span>
+<span id="cb47-4"><a href="#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(e2.lm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="colbox">
+<div data-latex="">
+<p>Exercise 11</p>
+</div>
+<p>In the data set <code>pressure</code> (<em>datasets</em>), examine the dependence of pressure on temperature.</p>
+<p>[The relevant theory is that associated with the Claudius-Clapeyron equation, by which the logarithm of the vapor pressure is approximately inversely proportional to the absolute temperature. For further details of the Claudius-Clapeyron equation, search on the internet, or look in a suitable reference text.]</p>
+</div>
+<p>The following fits the Claudius-Claperon equation</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>pressure<span class="sc">$</span>K <span class="ot">&lt;-</span> pressure<span class="sc">$</span>temperature<span class="sc">+</span><span class="dv">273</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(pressure) <span class="sc">~</span> <span class="fu">I</span>(<span class="dv">1</span><span class="sc">/</span>K), <span class="at">data=</span>pressure)</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>p.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(pressure) <span class="sc">~</span>  <span class="fu">I</span>(<span class="dv">1</span><span class="sc">/</span>K), <span class="at">data=</span>pressure)</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main=</span><span class="st">'A: Points, with fitted line'</span>)</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(p.lm, <span class="at">which=</span><span class="dv">1</span>, <span class="at">main=</span><span class="st">'B: Residuals vs fitted values'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Look also at the adjusted R-squared statistic:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">summary</span>(p.lm)<span class="sc">$</span>adj.r.squared, <span class="at">digits=</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.999888</code></pre>
+</div>
+</div>
+<p>The plot in Panel A, and the adjusted R-squared statistic, show a very close fit. Nonetheless, Panel B shows systematic departures from the fitted line.</p>
+<p>Panel A in the figure below shows large departures from the line that is fitted on a logarithmic scale at the lowest temperatures, where the pressure is also lowest. Working with <code>log(pressure)</code> exaggerates the weight given to low values for <code>pressure</code>, relative to high values. The linear equation <span class="math display">\[ \log(pressure) = a + \frac{b}{K} \]</span> can be rewritten: <span class="math display">\[
+pressure = \mbox{exp}(a)\mbox{exp}(\frac{b}{K})
+\]</span> The function <code>nls()</code> can then be used for a fit of this nonlinear version of the model, thus giving equal weight to all values of <code>pressure</code>. Panel B shows residuals whose scatter is then much more similar across all values of pressure.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">resid</span>(p.lm) <span class="sc">~</span> K, <span class="at">data=</span>pressure)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main=</span><span class="st">'A: Residuals from lm fit, vs `K`'</span>)</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>ab <span class="ot">&lt;-</span> <span class="fu">coef</span>(p.lm)</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>p.nls <span class="ot">&lt;-</span> <span class="fu">nls</span>(pressure <span class="sc">~</span> A<span class="sc">*</span><span class="fu">exp</span>(b<span class="sc">/</span>K), <span class="at">data=</span>pressure, <span class="at">start=</span><span class="fu">list</span>(<span class="at">A=</span><span class="fu">exp</span>(ab[<span class="dv">1</span>]),<span class="at">b=</span>ab[<span class="dv">2</span>]))</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">resid</span>(p.nls) <span class="sc">~</span> <span class="fu">fitted</span>(p.nls))</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">main=</span><span class="st">'B: Residuals from nls fit'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch2_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The use of <code>nls()</code> for nonlinear least squares is discussed in Subsection 3.8.4.</p>
+<div class="colbox">
+<div data-latex="">
+<p>Exercise 15</p>
+</div>
+<p>*A Markov chain is a data sequence which has a special kind of dependence. For example, a fair coin is tossed repetitively by a player who begins with $2. If `heads’ appear, the player receives one dollar; otherwise, she pays one dollar. The game stops when the player has either $0 or $5. The amount of money that the player has before any coin flip can be recorded – this is a Markov chain. A possible sequence of plays is as follows:</p>
+<pre><code>Player's fortune:  2  1  2  3  4  3  2  3  2  3  2  1  0 
+Coin Toss result:  T  H  H  H  T  T  H  T  H  T  T  T </code></pre>
+<p>Note that all we need to know in order to determine the player’s fortune at any time is the fortune at the previous time as well as the coin flip result at the current time. The probability of an increase in the fortune is .5 and the probability of a decrease in the fortune is .5. Such transition probabilities are usually summarized in a transition matrix:</p>
+<p><span class="math display">\[ P = \left[ \begin{array}{c c c c c c} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+                                 .5 &amp; 0 &amp; .5 &amp; 0 &amp; 0 &amp; 0 \\
+                                  0 &amp; .5 &amp; 0 &amp; .5 &amp; 0 &amp; 0 \\
+                                  0 &amp; 0 &amp; .5 &amp; 0 &amp; .5 &amp; 0 \\
+                                  0 &amp; 0 &amp; 0 &amp; .5 &amp; 0 &amp; .5 \\
+                                  0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1\\
+                                  \end{array} \right]\]</span></p>
+<p>The <span class="math inline">\((i,j)\)</span> entry of this matrix refers to the probability of making a change from the value <span class="math inline">\(i\)</span> to the value <span class="math inline">\(j\)</span>. Here, the possible values of <span class="math inline">\(i\)</span> and <span class="math inline">\(j\)</span> are <span class="math inline">\(0, 1, 2, \ldots, 5\)</span>. According to the matrix, there is a probability of 0 of making a transition from $2 to $4 in one play, since the (2,4) element is 0; the probability of moving from $2 to $1 in one transition is 0.5, since the (2,1) element is 0.5.</p>
+<p>The following function can be used to simulate <span class="math inline">\(N\)</span> values of a Markov chain sequence, with transition matrix <span class="math inline">\(P\)</span>:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>Markov <span class="ot">&lt;-</span> <span class="cf">function</span> (<span class="at">N=</span><span class="dv">100</span>, <span class="at">initial.value=</span><span class="dv">1</span>, P)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>    X <span class="ot">&lt;-</span> <span class="fu">numeric</span>(N)</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    X[<span class="dv">1</span>] <span class="ot">&lt;-</span> initial.value <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(P)</span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>N){</span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    X[i] <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span>n, <span class="at">size=</span><span class="dv">1</span>, <span class="at">prob=</span>P[X[i<span class="dv">-1</span>],])}</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>    X <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a><span class="do">## Set `stopval=c(0,5)` to stop when the player's fortune is $0 or $5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Simulate 15 values of the coin flip game, starting with an initial value of $2.</p>
+</div>
+<p>Code which may be used is:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>P <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">5</span>), <span class="fu">rep</span>(<span class="fu">c</span>(.<span class="dv">5</span>,<span class="dv">0</span>,.<span class="dv">5</span>, <span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">4</span>)),<span class="dv">4</span>), <span class="dv">0</span>,<span class="dv">1</span>),</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">byrow=</span><span class="cn">TRUE</span>,<span class="at">nrow=</span><span class="dv">6</span>)</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a><span class="fu">Markov</span>(<span class="dv">15</span>, <span class="dv">2</span>, P)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="colbox">
+<div data-latex="">
+<p>Exercise 15 – additional exercises</p>
+</div>
+<ol type="a">
+<li>Simulate 100 values of the Markov chain which has the following transition matrix. Save the result to a vector and use <code>ts.plot()</code> to plot the sequence. <span class="math display">\[ P = \left[
+\begin{array}{rrrrrr}
+0.10 &amp; 0.90 &amp; 0.00 &amp; 0.00 &amp; 0.00 &amp; 0.00 \\
+0.50 &amp; 0.00 &amp; 0.50 &amp; 0.00 &amp; 0.00 &amp; 0.00 \\
+0.00 &amp; 0.50 &amp; 0.00 &amp; 0.50 &amp; 0.00 &amp; 0.00 \\
+0.00 &amp; 0.00 &amp; 0.50 &amp; 0.00 &amp; 0.50 &amp; 0.00 \\
+0.00 &amp; 0.00 &amp; 0.00 &amp; 0.50 &amp; 0.00 &amp; 0.50 \\
+0.00 &amp; 0.00 &amp; 0.00 &amp; 0.00 &amp; 1.00 &amp; 0.00 \\
+\end{array} \right] \]</span></li>
+<li>Now simulate 1000 values from the above Markov chain, and calculate the proportion of times the chain visits each of the states. It can be shown, using linear algebra, that in the long run, this Markov chain will visit the states according to the following <em>stationary</em> distribution</li>
+</ol>
+<pre><code> 0         1         2         3         4         5
+ 0.1098901 0.1978022 0.1978022 0.1978022 0.1978022 0.0989011</code></pre>
+<p>There is a result called the <em>ergodic</em> theorem which allows us to estimate this distribution by simulating the Markov chain for a long enough time. Compare your calculated proportions with above theoretical proportions. Repeat the experiment using 10000 simulated values; the calculated proportions should be even closer to the theoretically predicted proportions in that case.<br>
+c.&nbsp;Simulate 100 values of the Markov chain which has the following transition matrix. Plot the sequence. Compare the results when the initial value is 1 with when the initial value is 3, 4, or 5. [When the initial value is 0 or 1, this Markov chain wanders a bit before settling down to its stationary distribution which is concentrated more on the values 4 and 5. This wandering period is sometimes called `burn-in’.] <span class="math display">\[ P = \left[
+\begin{array}{llllll}
+0.50 &amp; 0.50 &amp; 0    &amp; 0    &amp; 0    &amp; 0    \\
+0.50 &amp; 0.45 &amp; 0.05 &amp; 0    &amp; 0    &amp; 0    \\
+0    &amp; 0.01 &amp; 0    &amp; 0.90 &amp; 0.09 &amp; 0    \\
+0    &amp; 0    &amp; 0.01 &amp; 0.40 &amp; 0.59 &amp; 0    \\
+0    &amp; 0    &amp; 0    &amp; 0.50 &amp; 0    &amp; 0.50 \\
+0    &amp; 0    &amp; 0    &amp; 0    &amp; 0.50 &amp; 0.50 \\
+\end{array} \right] \]</span></p>
+</div>
+<p>Here is code that may be used for these calculations.</p>
+<ol type="a">
+<li></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>Pb <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.10</span>,<span class="fl">0.90</span>,<span class="fl">0.00</span>,<span class="fl">0.00</span>,<span class="fl">0.00</span>,<span class="fl">0.00</span>,</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.50</span>,<span class="fl">0.00</span>,<span class="fl">0.50</span>,<span class="fl">0.00</span>,<span class="fl">0.00</span>,<span class="fl">0.00</span>,</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.00</span>,<span class="fl">0.50</span>,<span class="fl">0.00</span>,<span class="fl">0.50</span>,<span class="fl">0.00</span>,<span class="fl">0.00</span>,</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.00</span>,<span class="fl">0.00</span>,<span class="fl">0.50</span>,<span class="fl">0.00</span>,<span class="fl">0.50</span>,<span class="fl">0.00</span>,</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.00</span>,<span class="fl">0.00</span>,<span class="fl">0.00</span>,<span class="fl">0.50</span>,<span class="fl">0.00</span>,<span class="fl">0.50</span>,</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.00</span>,<span class="fl">0.00</span>,<span class="fl">0.00</span>,<span class="fl">0.00</span>,<span class="fl">1.00</span>,<span class="fl">0.00</span>), </span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">byrow=</span><span class="cn">TRUE</span>, <span class="at">nrow=</span><span class="dv">6</span>)</span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>xb <span class="ot">&lt;-</span> <span class="fu">Markov</span>(<span class="dv">100</span>, <span class="dv">1</span>, Pb)</span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a>xb</span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ts.plot</span>(xb)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="a">
+<li></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>xc <span class="ot">&lt;-</span> <span class="fu">Markov</span>(<span class="dv">1000</span>, <span class="dv">1</span>, Pb)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(xb)<span class="sc">/</span><span class="dv">1000</span>  <span class="co"># one of several ways to calculate the proportions</span></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>xc</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>xc2 <span class="ot">&lt;-</span> <span class="fu">Markov</span>(<span class="dv">10000</span>, <span class="dv">1</span>, Pb)</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(xc2)<span class="sc">/</span><span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="a">
+<li></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>Pd <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.50</span>, <span class="fl">0.50</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>               <span class="fl">0.50</span>, <span class="fl">0.45</span>, <span class="fl">0.05</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>,</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>, <span class="fl">0.01</span>, <span class="dv">0</span>, <span class="fl">0.90</span>, <span class="fl">0.09</span>, <span class="dv">0</span>,</span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.01</span>, <span class="fl">0.40</span>, <span class="fl">0.59</span>, <span class="dv">0</span>,</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.50</span>, <span class="dv">0</span>, <span class="fl">0.50</span>,</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>               <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="fl">0.50</span>, <span class="fl">0.50</span>), </span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">nrow=</span><span class="dv">6</span>, <span class="at">byrow=</span><span class="cn">TRUE</span>)</span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>The following <span class="cf">function</span> may be helpful, <span class="cf">in</span> examining results.</span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="st">`</span><span class="at">plotmarkov</span><span class="st">`</span> <span class="ot">&lt;-</span></span>
+<span id="cb58-10"><a href="#cb58-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">function</span>(<span class="at">n=</span><span class="dv">10000</span>, <span class="at">start=</span><span class="dv">1</span>, <span class="at">window=</span><span class="dv">100</span>, <span class="at">transition=</span>Pd){</span>
+<span id="cb58-11"><a href="#cb58-11" aria-hidden="true" tabindex="-1"></a>    xc2 <span class="ot">&lt;-</span> <span class="fu">Markov</span>(n, start, transition)</span>
+<span id="cb58-12"><a href="#cb58-12" aria-hidden="true" tabindex="-1"></a>    z4 <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(xc2<span class="sc">==</span><span class="dv">4</span>)</span>
+<span id="cb58-13"><a href="#cb58-13" aria-hidden="true" tabindex="-1"></a>    z5 <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(xc2<span class="sc">==</span><span class="dv">5</span>)</span>
+<span id="cb58-14"><a href="#cb58-14" aria-hidden="true" tabindex="-1"></a>    mav4 <span class="ot">&lt;-</span> <span class="fu">rollmean</span>(z4,window)</span>
+<span id="cb58-15"><a href="#cb58-15" aria-hidden="true" tabindex="-1"></a>    mav5 <span class="ot">&lt;-</span> <span class="fu">rollmean</span>(z5,window)</span>
+<span id="cb58-16"><a href="#cb58-16" aria-hidden="true" tabindex="-1"></a>    df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">av4=</span>mav4, <span class="at">av5=</span>mav5, <span class="at">x=</span><span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>, <span class="at">length=</span><span class="fu">length</span>(mav4)),</span>
+<span id="cb58-17"><a href="#cb58-17" aria-hidden="true" tabindex="-1"></a>                     <span class="at">gp=</span>(<span class="dv">0</span><span class="sc">:</span>(<span class="fu">length</span>(mav4)<span class="sc">-</span><span class="dv">1</span>))<span class="sc">%/%</span><span class="dv">1000</span>)</span>
+<span id="cb58-18"><a href="#cb58-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">xyplot</span>(av4<span class="sc">+</span>av5 <span class="sc">~</span> x <span class="sc">|</span> gp, <span class="at">data=</span>df, <span class="at">layout=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">10</span>), <span class="at">type=</span><span class="st">"l"</span>,</span>
+<span id="cb58-19"><a href="#cb58-19" aria-hidden="true" tabindex="-1"></a>                 <span class="at">par.strip.text=</span><span class="fu">list</span>(<span class="at">cex=</span><span class="fl">0.65</span>)))</span>
+<span id="cb58-20"><a href="#cb58-20" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb58-21"><a href="#cb58-21" aria-hidden="true" tabindex="-1"></a><span class="do">## Use thus</span></span>
+<span id="cb58-22"><a href="#cb58-22" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(zoo)  <span class="co"># Use rollmean() [moving average] from zoo</span></span>
+<span id="cb58-23"><a href="#cb58-23" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lattice)</span>
+<span id="cb58-24"><a href="#cb58-24" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmarkov</span>(<span class="at">start=</span><span class="dv">1</span>)</span>
+<span id="cb58-25"><a href="#cb58-25" aria-hidden="true" tabindex="-1"></a><span class="fu">plotmarkov</span>(<span class="at">start=</span><span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a 1="" href="./ch1.html" class="pagination-link  aria-label=" &lt;span="" to="" selected="" chapter="" exercises&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 1 Exercises</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./summary.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>Summary</span>">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

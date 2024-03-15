@@ -1,9 +1,9 @@
 # Preface {.unnumbered}
 
-This is a Quarto book.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+This website makes available solutions to selected exercises
+from the new Cambridge University Press text, due to appear 
+in published form in May or June 2024:
 
-```{r}
-1 + 1
-```
+> "A Practical Guide to Data Analysis Using R -- An Example-Based Approach",
+> by John H Maindonald, W John Braun, and Jeffrey L Andrews.
