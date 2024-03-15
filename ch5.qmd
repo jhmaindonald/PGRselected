@@ -1,0 +1,177 @@
+---
+title: "Answers to Selected Chapter 5 Exercises"
+subtitle: "Generalized linear models and survival analysis"
+date: "2024-03-15"
+output: 
+  html_document: default
+  pdf_document:
+    includes:
+      in_header: "preamble.tex"
+    latex_engine: xelatex
+---
+
+```{css, echo=F}
+.colbox {
+  padding: 1em;
+  background: white;
+  color: black;
+  border: 2px solid orange;
+  border-radius: 10px;
+}
+.center {
+  text-align: left;
+}
+}
+```
+
+```{r, echo=FALSE, include=FALSE}
+library(knitr)
+opts_chunk$set(fig.align='center', fig.show='hold', size="small", ps=10, 
+               out.width="80%", comment=NA, strip.white = TRUE,
+                    tidy.opts = list(replace.assign=FALSE))
+```
+
+
+````{=tex}
+\begin{fmpage}{32pc}
+\noindent *Preliminaries*
+```{r DAAG, echo=TRUE, quiet=TRUE, results='hide'}
+library(DAAG)
+``` 
+\end{fmpage}
+````
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 1
+:::
+The following table shows numbers of occasions when inhibition
+  (i.e., no flow of current across a membrane) occurred within 120 s,
+  for different concentrations of the protein peptide-C (data
+    are used with the permission of Claudia Haarmann, who obtained
+    these data in the course of her PhD\ research).  The outcome
+  `yes`  implies that inhibition has occurred.
+
+```
+conc 0.1 0.5  1 10 20 30 50 70 80 100 150
+no     7   1 10  9  2  9 13  1  1   4   3
+yes    0   0  3  4  0  6  7  0  0   1   7
+```
+
+Use logistic regression to model the probability of inhibition
+as a function of protein concentration.
+:::
+It is useful to begin by plotting the logit of the observed proportions against `log(conc)`. Concentrations are nearer to equally spaced on a scale of relative dose, rather than on a scale of dose, suggesting that it might be appropriate to work with `log(conc)`. In order to allow plotting of cases where `no = 0` or `yes = 0`, we add 0.5 to each count.
+
+```{r ex1, echo=FALSE, eval=TRUE, fig.width=5, fig.height=5, out.width='50%'}
+conc <- c(.1, .5, 1, 10, 20, 30, 50, 70, 80, 100, 150)
+no <- c(7, 1, 10, 9, 2, 9, 13, 1, 1, 4, 3)
+yes <- c(0, 0, 3, 4, 0, 6, 7, 0, 0, 1 ,7)
+n <- no + yes
+plot(log(conc), log((yes+0.5)/(no+0.5)))
+```
+
+```{r ex1, echo=FALSE, eval=FALSE}
+```
+
+The plot seems reasonably consistent with the use of `log(conc)` as the explanatory variable. Code is:
+
+```{r ex1, echo=TRUE, eval=FALSE}
+```
+
+The code for the regression is:
+p <- yes/n
+inhibit.glm <- glm(p ~ I(log(conc)), family=binomial, weights=n)
+summary(inhibit.glm)
+```
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 2
+:::
+In the data set (an artificial one of 3121 patients, that is
+  similar to a subset of the data analyzed in Stiell et al. (2001))
+  `minor.headInjury`, obtain a logistic
+  regression model relating
+  `clinically.important.brain.injury`  to other variables.  
+Patients whose risk is sufficiently high will be sent for CT
+(computed tomography). Using a risk threshold of 0.025 (2.5\%),
+turn the result into a decision rule for use of CT.
+:::
+```{r ex2, echo=TRUE}
+sapply(headInjury, range)
+injury.glm <- glm(clinically.important.brain.injury ~ ., 
+                  data=headInjury, family=binomial)
+summary(injury.glm)
+```
+
+Observe that `log(.025/(1-.025)) = -3.66`, an increase of 0.84 above the intercept (= -4.50). This change in risk results from (1) `GCS.decrease` with any other individual factor except `amnesia.before`, `GCS.decrease` and `open.skull.fracture`; (2) `GCS.decrease` with any two of `amnesia.before`, `open.skull.fracture` and `loss.of.consciousness`; (3) any of the individual factors `age.65`, `basal.skull.fracture`, `GCS.15.2hours`, `high.risk` and `vomiting`, irrespective of the levels of other factors.
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 3
+:::
+Consider again the `moths` data set of Subsection 5.4.2.
+
+* What happens to the standard error estimates when the `poisson`
+family is used in `glm()` instead of the `quasipoisson` family?
+* Analyze the `P` moths, in the same way as the `A` moths
+were analyzed.  Comment on the effect of transect length.
+:::
+*  The dispersion estimate was 2.7. Use of the `quasipoisson` 
+family has the effect of increasing SEs by a factor of $\sqrt{2.7}$,
+relative to the `poisson` family. 
+SEs on pp.265 will thus be reduced by this factor if the
+`poisson` family is (inappropriately) specified.  
+*
+```{r ex3c, echo=TRUE}
+sapply(split(moths$P, moths$habitat), sum)
+moths$habitat <- relevel(moths$habitat, ref="Lowerside")
+P.glm <- glm(P ~ habitat + log(meters), family=quasipoisson, 
+             data=moths)
+``` 
+The highest numbers are now for `SWsoak` and for `Disturbed`
+The number of moths increases with transect length, by a factor of
+approximately 1.74 (= $e^.55$) for each one meter increase in transect length.
+\end{enumerate}
+````
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 4
+:::
+\*The factor `dead` in the data set `mifem`
+(*DAAG* package) gives the mortality outcomes (`live`  or
+`dead`), for 1295 female subjects who suffered a myocardial
+infarction.  (See Subsection 8.3.1 for further details.)
+Determine ranges for `age` and `yronset` (year of onset),
+and determine tables of counts for each separate factor.  Decide how
+to handle cases for which the outome, for one or more factors, is not
+known.  Fit a logistic regression model, beginning by comparing the
+model that includes all two-factor interactions with the model that
+has main effects only.
+:::
+First, examine various summary information:
+
+```{r ex4, echo=TRUE}
+str(mifem)
+sapply(mifem[, c("age", "yronset")], range)
+lapply(mifem[, -(1:3)], table)
+```
+
+For all of the factors, there are a large number of nk's, i.e., *not known*. A straightforward way to handle them is to treat `nk` as a factor level that, as for `y` and `n`, may give information that helps predict the outcome. For ease of interpretation we will make `n`, the reference level.
+
+```{r mifem-glm, echo=TRUE, warning=FALSE}
+for(j in 4:10)mifem[,j] <- relevel(mifem[,j], ref="n")
+mifem1.glm <- glm(outcome ~ ., family=binomial, data=mifem)
+mifem2.glm <- glm(outcome ~ .^2, family=binomial, data=mifem)
+anova(mifem1.glm, mifem2.glm)
+CVbinary(mifem1.glm)
+CVbinary(mifem2.glm)
+```
+
+Warning messages that "fitted probabilities numerically 0 or 1 occurred" have been suppressed in the output shown.
+
+The difference in deviance suggests a real difference (`pchisq(125,159) = 0.021`). Here, however, the chi-squared approximation to the change in deviance should be queried.
+
+It is safer to compare the cross-validated accuracy estimates, which in individual cross-validation runs were marginally lower for `mifem2.glm` than for `mifem2.glm`; 0.78 as against 0.80. Note also that there were convergence problems for the model that included all first order interaction terms.

@@ -1,0 +1,322 @@
+---
+title: "Answers to Selected Chapter 3 Exercises"
+subtitle: "Multiple linear regression"
+date: "2024-03-15"
+output: 
+  html_document: default
+  pdf_document:
+    includes:
+      in_header: "preamble.tex"
+    latex_engine: xelatex
+---
+
+```{css, echo=F}
+.colbox {
+  padding: 1em;
+  background: white;
+  color: black;
+  border: 2px solid orange;
+  border-radius: 10px;
+}
+.center {
+  text-align: left;
+}
+}
+```
+
+```{r, echo=FALSE, include=FALSE}
+library(knitr)
+opts_chunk$set(fig.align='center', fig.show='hold', size="small", ps=10, 
+               comment=NA, strip.white = TRUE, out.width="80%", 
+               eval=TRUE, fig.width=7, fig.height=7,
+               tidy.opts = list(replace.assign=FALSE))
+```
+
+```{r}
+library(DAAG)
+```
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 4
+:::
+In the data set `cement` (*MASS* package), examine the dependence of `y` (amount of heat produced) on `x1`, `x2`, `x3` and `x4` (which are proportions of four constituents). Begin by examining the scatterplot matrix. As the explanatory variables are proportions, do they require transformation, perhaps by taking $\log(x/(100-x))$? What alternative strategies might be useful for finding an equation for predicting heat?
+:::
+
+First, obtain the scatterplot matrix for the untransformed cement data:
+
+```{r, fig.width=7, fig.height=7, echo=FALSE, eval=TRUE, out.width='90%'}
+#| label: fig-ex4
+cement <- MASS::cement
+pairs(cement, main="Scatterplot matrix for the cement data")
+```
+
+```{r, eval=FALSE}
+#| label: fig-ex4
+```
+
+Since the explanatory variables are proportions, a transformation such as that suggested might be helpful, though the bigger issue is the fact that the sum of the explanatory variables is nearly constant, leading to severe multicollinearity as indicated both by the variance inflation factors, and by the strong correlation between `x4`and`x2` that is evident in the scatterplot matrix.
+
+```{r vif, echo=TRUE, eval=TRUE}
+cement.lm <- lm(y ~ x1+x2+x3+x4, data=cement)
+DAAG::vif(cement.lm)
+```
+
+We may wish to include just one of `x2`and`x4`. The following omits `x4`:
+
+```{r vif2, echo=TRUE}
+cement.lm2 <- lm(y ~ x1+x2+x3, data=cement)
+DAAG::vif(cement.lm2)
+```
+
+The multicollinearity is less severe. We check the standard diagnostics 
+for the linear model:
+
+```{r, fig.width=10, fig.height=2.65, echo=TRUE, eval=TRUE}
+par(mfrow=c(1,4))
+plot(cement.lm2)
+```
+
+Nothing seems amiss on these plots. The three variable model seems satisfactory. Upon looking at the summary, one might argue for removing the variable `x3`.
+
+For the logit analysis, first define the logit function:
+
+```{r logit, echo=TRUE}
+logit <- function(x) log(x/(100-x))
+```
+
+Now form the transformed data frame, and show the scatterplot matrix:
+
+```{r, logitcement, echo=TRUE, eval=TRUE}
+logitcement <- data.frame(logit(cement[,c("x1","x2","x3","x4")]), 
+     y=cement[, "y"])
+pairs(logitcement)
+title(main="Scatterplot matrix for the logits of the proportions.")
+```
+
+Notice that the relationship between `x2` and `x4` is now more nearly linear. This is helpful -- it is advantageous for collinearities or multicollinearities to be explicit.
+
+Now fit the full model, and plot the diagnostics:
+
+```{r, cement-diag, fig.width=10, fig.height=2.65, echo=TRUE}
+logitcement.lm <- lm(y ~ x1+x2+x3+x4, data=logitcement)
+par(mfrow=c(1,4))
+plot(logitcement.lm)
+title(main="Diagnostic plots for the model that works with logits")
+```
+
+The multicollinearity is now less extreme, though still substantial. This happens because some observations now appear as influential outliers. Is it best not to transform the predictors?
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 6
+:::
+\*The data frame `hills2000` in our _DAAG_ package has data, based on information from the Scottish Running Resource web site, that updates the 1984 information in the data set `hills`. Fit a regression model, for men and women separately, based on the data in `hills2000`. Check whether it fits satisfactorily over the whole range of race times. Compare the equation that you obtain with that based on the `hills` data frame.
+:::
+
+```{r ex6, echo=TRUE}
+hills2K <- DAAG::hills2000
+```
+
+We begin with the same kind of transformed model that we tried 
+in Section 3.2.2 for the `hills` data, examining the diagnostic 
+plots and the termplots.
+
+```{r, hills2K-loglm, eval=TRUE, echo=TRUE, fig.width=10, fig.height=2.65}
+hills2K.loglm <- lm(log(time) ~ log(dist) + log(climb),
+                    data=hills2K)
+par(mfrow=c(1,4))
+plot(hills2K.loglm)
+```
+
+```{r hills2K, echo=TRUE, eval=FALSE, fig.width=7.5, fig.height=3.85, out.width="100%"}
+par(mfrow=c(1,2))
+termplot(hills2K.loglm, transform.x=T, partial=T)
+```
+
+The first of the diagnostic plots (residuals versus fitted values) reveals three potential outliers, identified as 12 Trig Trog, Chapelgill, and Caerketton.
+
+A robust fit, which may be a safer guide, leads to quite similar diagnostic
+plots and termplots. Simply replace `lm()` by `MASS::rlm()` and repeat the
+plots.  
+
+The first of the diagnostic plots shows a bucket shaped pattern in
+the residuals, suggesting that the `log(time)` is not quite the
+right transformation of time.  The following investigates the use
+of a power transformation:
+
+```{r, hills2Kr, fig.width=3.5, fig.height=3.5, echo=FALSE}
+suppressPackageStartupMessages(library(MASS))
+summary(car::powerTransform(rlm(time ~ log(dist) + log(climb),
+                                        data=hills2K)))
+```
+A power transformation with $\lambda$ = -0.1 is indicated. This leads
+to the fitted model `ptime.rlm` thus:
+```{r, pwr, eval=TRUE}
+ptime.rlm <- MASS::rlm(car::bcPower(time, -0.1) ~ log(dist) +
+                               log(climb), data=hills2K)
+summary(ptime.rlm)                               
+```
+Diagnostic plots are:
+```{r, hills2K-pwr, eval=TRUE, echo=TRUE, fig.width=10, fig.height=2.65}
+par(mfrow=c(1,4))
+plot(ptime.rlm, add.smooth=FALSE)
+```
+
+Caerketton now stands out. 
+
+For putting a smooth through the plot of residuals versus fitted values,
+one needs to do a robust fit. One can use a 'loess()' fit with
+`family="symmetric"`. A more theoretically informed approach is to
+use a GAM smooth as described in Chapter 4, with `family="scat"`.
+
+```{r, fig.width=4.5, fig.aspect=1, out.width="55%"}
+plot(fitted(ptime.rlm), residuals(ptime.rlm))
+res.gam <- mgcv::gam(residuals(ptime.rlm)~s(fitted(ptime.rlm)),  
+                       family='scat')
+points(fitted(ptime.rlm), fitted(res.gam), col='red')                       
+```
+
+Now see how the fitted model fares when applied to the
+`DAAG::hills` dataset:
+```{r, fig.width=4.5, fig.aspect=1, out.width="55%"}
+#| label: hillsVShills2K
+ptimehills <- car::bcPower(DAAG::hills$time, lambda=-0.1)
+ppredhills <- predict(ptime.rlm, newdata=DAAG::hills)
+plot(ppredhills, ptimehills)
+abline(0,1)
+```
+The line shows close agreement with the earlier data.
+As `hills2000` was an update on the earlier `hills` data,
+this is not surprising.
+
+The steps above should then be repeated for the female records.
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 7
+:::
+\*Section 3.1 used `lm()` to analyze the `allbacks`
+data that are presented in Figure 3.1. Repeat the analysis using (1)
+the function `rlm()` in the *MASS* package, and (2) the
+function `lqs()}` in the *MASS* package.  Compare the two
+sets of results with the results in Section 3.1.
+:::
+Here are fits, w/wo intercept, using `rlm()`
+
+```{r ex7, echo=TRUE}
+library(MASS)
+allbacks <- DAAG::allbacks
+allbacks.rlm <- rlm(weight ~ volume+area, data=allbacks)
+summary(allbacks.rlm)
+allbacks.rlm0 <- rlm(weight ~ volume+area-1, data=allbacks)
+summary(allbacks.rlm0)
+```
+
+Here are plots of residuals against fitted values, for the two models.
+
+```{r, eval=TRUE, echo=FALSE, out.width='100%'}
+#| label: fig-abacksrlm 
+#| fig.width: 7
+#| fig.height: 3.95 
+par(mfrow=c(1,2))
+plot(allbacks.rlm, which=1)   # residual plot
+mtext(side=3, line=1, "rlm(), intercept included")
+plot(allbacks.rlm0, which=1)  # residual plot
+mtext(side=3, line=1, "rlm(), no intercept")
+```
+
+Code is:
+```{r, eval=FALSE}
+#| label: fig-abacksrlm 
+```
+
+Comparison of the coefficients of the intercept and no-intercept with the `lm()` counterparts reveals larger differences in coefficient estimates for the intercept models. The robust method has given smaller coefficient standard errors than `lm()`.
+
+The influence of the outlying observation (the 13th) is reduced using the robust method; therefore, on the residual plots we see this observation featured even more prominently as an outlier than on the corresponding plots for the `lm()` fits.
+
+We next consider the `lqs()` approach. By default, `lqs()` employs a resistant regression method called least trimmed squares regression (lts), an idea due to Rousseeuw (1984) ("Least median of squares regression." *Journal of the American Statistical Association* 79: 871--888). The method minimizes the sum of the $k$ smallest squared residuals, where $k$ is usually taken to be slightly larger than 50% of the sample size. This approach removes all of the influence of outliers on the fitted regression line.
+
+```{r lqs, echo=TRUE}
+allbacks.lqs <- lqs(weight ~ volume+area, data=allbacks)
+allbacks.lqs$coefficients  # intercept model
+allbacks.lqs0 <- lqs(weight ~ volume+area-1, data=allbacks)
+coefficients(allbacks.lqs0)  # no-intercept model
+```
+
+The robust coefficient estimates of volume and area are similar to the corresponding coefficient estimates for the `lm()` fit.
+
+Here are plots of residuals against fitted values, for the two models.
+
+```{r abacks-lqs, fig.width=7, fig.height=3.95, eval=TRUE, echo=FALSE, out.width='100%'}
+par(mfrow=c(1,2))
+plot(allbacks.lqs$residuals ~ allbacks.lqs$fitted.values)                   
+mtext(side=3, line=1, "lqs(), intercept included")
+plot(allbacks.lqs0$residuals ~ allbacks.lqs0$fitted.values)
+mtext(side=3, line=1, "lqs(), no intercept")
+par(mfrow=c(1,1))
+``` 
+
+Because the outlying observation (13) is now not used at all in the final regression coefficient estimates, it has no influence. Neither does observation 11, another outlier. Both points plot farther away from the reference line at 0 than in the corresponding `lm()` residual plots.
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 9
+:::
+ \*Fit the model `brainwt ~ bodywt + lsize` to the `litters` dataset, then checking the variance inflation factors for `bodywt` and for `lsize`. Comment.
+:::
+      
+We can use the function `vif()` to determine the variance inflation factors for the litters data as follows: `{r ex9, echo=TRUE} litters <- DAAG::litters litters.lm <- lm(brainwt ~ bodywt + lsize, data=litters) DAAG::vif(litters.lm)` %
+
+A scatterplot of litter size versus body weight would confirm that the two variables have a relation which is close to linear. The effect is to give inflated standard errors in the above regression, though not enough to obscure the relationship between brain weight and body weight and litter size completely.
+
+It is hazardous to make predictions of brain weight for pigs having body weight and litter size which do not lie close to the line relating these variables.
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 12
+:::
+The data frame `MPV::table.b3` has
+data on gas mileage and eleven other variables for a sample
+of 32 automobiles.
+
+.  Construct a scatterplot of `y` (mpg) versus `x1`
+(displacement).  Is the relationship between these variables nonlinear?
+-  Use the `xyplot()` function, and `x11` (type of
+transmission) as a `group` variable.  Is a linear model
+reasonable for these data?  
+b.  Fit the model, relating `y` to `x1` and `x11`,
+which gives two lines having possibly different gradients and intercepts.
+Check the diagnostics.  Are there any influential observations?
+Are there any influential outliers?  
+c.  Plot the residuals against the variable `x7` (number
+of transmission speeds), again using `x11` as a `group`
+variable.  Comment on anything unusual about this plot?
+:::
+
+a. See Panel A in the graph that follows The scatterplot suggests a curvilinear relationship.  
+b.  See Panel B in the graph that follows. This suggests that the apparent nonlinearity is better explained by the two types of transmission.  
+```{r ex12ab, fig.width=7, fig.height=3.75, out.width='100%'} 
+library(lattice)
+## Panel A 
+gph1 <- xyplot(y ~ x1, data=MPV::table.b3) 
+## Panel B
+library(lattice) 
+gph2 <- xyplot(y ~ x1, group=x11, data=MPV::table.b3) 
+c('A: Plot y vs x1'=gph1, 'B: Group by transmission type'=gph2, layout=c(2,1))
+```
+c.
+```{r}
+ b3.lm <- lm(y ~ x1*x11, data=MPV::table.b3)
+ par(mfrow=c(1,4), pty="s")
+ plot(b3.lm)
+```
+Observation 5 is influential, but it is not an outlier.  
+d.
+```{r}
+#| fig.width: 5
+#| fig.height: 5
+xyplot(resid(b3.lm) ~ x7, groups=x11, data=MPV::table.b3, fig.aspect=1, out.width="50%")
+```
+This plot demonstrates that observation 5 is quite special. It is based 
+on the only car in the data set with a 3-speed manual transmission.

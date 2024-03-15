@@ -1,6 +1,6 @@
 ---
 title: "Answers to Selected Chapter 2 Exercises"
-author: "John Maindonald"
+subtitle: "Generalizing from models"
 date: "2024-03-15"
 output: 
   html_document: default

@@ -1,0 +1,348 @@
+---
+title: "Answers to Selected Chapter 4 Exercises"
+subtitle: "Exploiting the linear model framework"
+date: "2024-03-15"
+output: 
+  html_document: default
+  pdf_document:
+    includes:
+      in_header: "preamble.tex"
+    latex_engine: xelatex
+---
+
+output: 
+  html_document: default
+  pdf_document:
+    includes:
+      in_header: "preamble.tex"
+    latex_engine: xelatex
+---
+
+```{css, echo=F}
+.colbox {
+  padding: 1em;
+  background: white;
+  color: black;
+  border: 2px solid orange;
+  border-radius: 10px;
+}
+.center {
+  text-align: left;
+}
+}
+```
+
+```{r, echo=FALSE, include=FALSE}
+library(knitr)
+opts_chunk$set(fig.align='center', fig.show='hold', size="small", ps=10, 
+               out.width="80%", comment=NA, strip.white = TRUE,
+                    tidy.opts = list(replace.assign=FALSE))
+```
+
+```{r}
+library(DAAG)
+```
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 1
+:::
+
+Re-analyze the sugar weight data of Subsection 4.1.1 using the `log(weight)` in place of `weight`.
+:::
+
+From the scatterplot in Figure 4.1, it is clear that the treatment variances are not constant. Perhaps a logarithmic transformation will stabilize the variances.
+
+```{r ex1, echo=TRUE}
+sugarlog.aov <- aov(log(weight) ~ trt, data=sugar)
+summary.lm(sugarlog.aov)
+summary.lm(sugarlog.aov)
+```
+
+On the log scale, the differences from control remain discernible. However the plot should be compared with plots from random normal data. This should be repeated several times. There will be occasional samples that show changes in variability of the observed residuals that are of the extent observed for these data.
+
+THe following shows plots of residuals versus fitted values, for the log(sugar weight) data, and for random normal data.
+
+```{r, fig.width=6, fig.height=4.25, echo=FALSE, out.width='100%'}
+#| label: ex4-1
+par(mfrow=c(2,3))
+plot(sugarlog.aov, which=1, caption="Sugar data")
+for(i in 1:5){
+    plot(aov(rnorm(12)~sugar$trt), which=1, caption="Random normal data")
+    title(main=, line=1.75)
+}
+```
+
+```{r, echo=TRUE, eval=FALSE}
+#| label: ex4-1
+```
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 3
+:::
+
+For each of the datasets DAAG::elastic1 and DAAG::elastic2, determine the egression of stretch on distance. Use the method of Section 4.3 to compare, formally, the two regression lines.
+:::
+
+It will be convenient to work with a single data frame:
+
+```{r ex2, echo=TRUE}
+elastic2$expt <- rep(2, length(elastic2$stretch))
+elastic1$expt <- rep(1, length(elastic1$stretch))
+elastic <- rbind(elastic1, elastic2)
+elastic$expt <- factor(elastic$expt)
+```
+
+We fit two models as follows:
+
+```{r echo=TRUE}
+e.lm1 <- lm(distance ~ stretch, data=elastic)    # a single line
+e.lm2 <- lm(distance ~ stretch + expt, data=elastic)  
+  # two parallel lines
+e.lm3 <- lm(distance ~ stretch + expt + stretch:expt, data=elastic)
+  # two lines
+```
+
+The following sequential analysis of variance table indicates that there is mild evidence against the two lines having the same intercept.
+
+```{r anova, echo=TRUE}
+anova(e.lm1, e.lm2, e.lm3)
+```
+
+A check will show that observation 7 is an influential outlier. Let's check to see what happens to the three models when this observation is deleted.
+
+```{r echo=TRUE}
+e.lm1 <- lm(distance ~ stretch, data=elastic[-7,])
+e.lm2 <- lm(distance ~ stretch + expt, data=elastic[-7,])
+e.lm3 <- lm(distance ~ stretch + expt + stretch:expt, data=elastic[-7,])
+anova(e.lm1, e.lm2, e.lm3)
+```
+
+Now, we see that there is really very little evidence of a difference between the two lines. Observation 7 seems different in character from other observations.
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 4
+:::
+
+The data frame `toycars` consists of 27 observations on the distance (in meters) traveled by one of three different toy cars on a smooth surface, starting from rest at the top of a16-inch-long ramp tilted at varying angles (measured in degrees). Because of differing frictional effects for the three different cars, we seek three regression lines relating distance traveled to angle (measured in degrees). Start by plotting the data:
+
+```{r eval=FALSE}
+toycars <- DAAG::toycars
+lattice ::xyplot(distance ~ angle, groups=factor(car), type=c('p','r'),
+                 data=toycars, auto.key=list(columns=3))
+```
+
+a.  Fit the following models:
+
+```{r D7b1, eval=FALSE}
+parLines.lm <- lm(distance ~ 0+factor(car)+angle, data=toycars)
+sepLines.lm <- lm(distance ~ factor(car)/angle, data=toycars)
+```
+
+Compare the AIC statistics for the two models. Examine the diagnostic plots carefully. Is there a systematic pattern of departure from linear relationships?\
+b. Fit the model
+
+```{r D7b2,eval=FALSE}
+sepPol3.lm <- lm(distance ~ factor(car)/angle+poly(angle,3)[,2:3], data=toycars)
+```
+
+Compare the AIC statistics with those for the two models that fitted straight line relationships. Compare the diagnostic plots, with the diagnostic plots for one or other of the straight line models.\
+c. Repeat the comparison using the code:
+
+```{r D7b3,eval=FALSE}
+sapply(list(parLines.lm, sepLines.lm, sepPol3.lm), AICcmodavg::AICc)
+```
+
+Comment on the result.\
+d. A plausible physical model suggests that the three lines should have the same intercept (close to 0), and possibly differing slopes, where the slopes are inversely related to the coefficient of dynamic friction for each car. Is that consistent from what is apparent here? Comment.\
+e. Extract the adjusted $R^2$ statistics for the three models
+
+```{r <<D7b4, eval=FALSE}
+setNames(sapply(list(parLines.lm, sepLines.lm, sepPol3.lm),
+  function(x)summary(x)$adj.r.squared), c("parLines","sepLines","sepPol3"))
+```
+
+Repeat for $R^2$. This illustrates why neither of these statistics should be taken too seriously. In neither case does maximizing the statistic give the best model!
+:::
+
+```{r, ex3, echo=TRUE}
+toycars$car <- factor(toycars$car)  # car should be a factor
+toycars.lm <- lm(distance ~ angle + car, data=toycars)
+summary(toycars.lm)
+```
+
+From the diagnostics (below), we see that there is an influential outlier. The model is not fitting all of the data satisfactorily.
+
+```{r, toycars-diag, fig.width=10, fig.height=2.65, echo=FALSE, out.width='100%'}
+par(mfrow=c(1,4))
+plot(toycars.lm)
+```
+
+Code is:
+
+```{r, toycars-diag, eval=FALSE}
+```
+
+To fit the model with a constant intercept and possibly differing slopes, we proceed as follows:
+
+```{r toycars-lm2, echo=TRUE}
+toycars.lm2 <- lm(distance ~ angle + angle:car, data=toycars)
+summary(toycars.lm2)
+```
+
+We can see from the diagnostics below that observation 17 is still somewhat influential, but it is no longer an outlier. All of the data are accommodated by this new model reasonably well.
+
+```{r toycars2-diag, fig.width=10, fig.height=2.65, echo=FALSE, out.width='100%'}
+par(mfrow=c(1,4))
+plot(toycars.lm2)
+```
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 5
+:::
+
+The data frame `cuckoos` holds data on the lengths and breadths of eggs of cuckoos, found in the nests of six different species of host birds. Fit models for the regression of length on breadth that have:\
+a. a single line for all six species.\
+b. different parallel lines for the different host species.\
+c. separate lines for the separate host species. 
+
+Use the `anova()` function to print out the sequential analysis of variance table. Which of the three models is preferred? Print out the diagnostic plots for this model. Do they show anything worthy of note? Examine the output coefficients from this model carefully, and decide whether the results seem grouped by host species. How might the results be summarized for reporting purposes?
+:::
+
+```{r ex5, echo=TRUE}
+cuckoos.lm <- lm(length ~ breadth, data=cuckoos)  # one line
+cuckoos.lm2 <- lm(length ~ breadth + species, data=cuckoos) 
+                                 # parallel lines
+cuckoos.lm3 <- lm(length ~ breadth + species + species:breadth, 
+                  data=cuckoos)  # different lines
+
+anova(cuckoos.lm, cuckoos.lm2, cuckoos.lm3)
+```
+
+The anova summary shows a preference for the second mode. The standard diagnostics are given below.
+
+```{r cuckoos2-diag, fig.width=10, fig.height=2.65, echo=FALSE}
+par(mfrow=c(1,4))
+plot(cuckoos.lm2, main="Diagnostic plots for `cuckoos.lm`")
+```
+
+There is nothing on these plots that calls for especial attention.
+
+```{r cuckoo2, echo=TRUE}
+summary(cuckoos.lm2)
+```
+
+The baseline species is hedge sparrow, and we see some groupings among the host species.
+
+The relation between length and breadth of the eggs is similar when the\
+host species are hedge sparrow, pied wagtail and tree pipit. Even when the robin is the host species, there is little evidence of a difference in the way in which length and breadth are related. However, the linear relation between length and breadth has a smaller intercept when the host species is either the meadow pipit or the wren.
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 7
+:::
+\*Compare the two results
+
+```{r}
+seedrates.lm <- lm(grain ~ rate + I(rate^2), data=seedrates)
+seedrates.pol <- lm(grain ~ poly(rate,2), data=seedrates)
+```
+
+Check that the fitted values and residuals from the two calculations are the same, and that the $t$-statistic and $p$-value are the same for the final coefficient, i.e., the same for the coefficient labeled `poly(rate, 2)2` in the polynomial regression as for the coefficient labeled `I(rate^2)` in the regression on `rate` and `rate^2`.
+
+Regress the second column of `model.matrix(seedrates.pol)` on `rate` and `I(rate^2`), and similarly for the third column of `model.matrix(seedrates.pol)`. Hence express the first and second orthogonal polynomial terms as functions of `rate` and `rate^2`.
+:::
+
+The following shows that the fitted values and residuals are the same for the two calculations. The $t$-statistic and $p$-value are also the same for the final coefficient.
+
+```{r ex7, echo=TRUE}
+seedrates.lm <- lm(grain ~ rate + I(rate^2), data=seedrates)
+seedrates.pol<- lm(grain ~ poly(rate, 2), data=seedrates)
+fitted(seedrates.lm)-fitted(seedrates.pol)
+resid(seedrates.lm)-resid(seedrates.pol)
+summary(seedrates.lm)
+summary(seedrates.pol)
+```
+
+From the following output, we can infer that the first orthogonal polynomial is $$ p_1(x) = -1.265 + .01265x 
+$$ and the second orthogonal polynomial is $$ p_2(x) = 3.742 - .08552x + .0004276x^2$$
+
+```{r basis2, echo=TRUE}
+attach(seedrates)
+y <- model.matrix(seedrates.pol)[,2]
+y.lm <- lm(y ~ rate + I(rate^2))
+coef(y.lm)
+y <- model.matrix(seedrates.pol)[,3]
+y.lm <- lm(y ~ rate + I(rate^2))
+coef(y.lm)
+```
+
+Among other things, the polynomials given above have the property that 
+$$ 
+p_1(50)p_2(50) + p_1(75)p_2(75) + p_1(100)p_2(100)+p_1(125)p_2(125)+
+p_1(150)p_2(150)
+$$
+since the values of the predictor are:
+
+```{r basis3, echo=TRUE}
+rate
+detach(seedrates)
+```
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 14
+:::
+ The `ozone` data frame holds data, for nine months only, on
+  ozone levels at the Halley Bay station between 1956 and
+  2000. (See Christie (2000) and Shanklin (2001) for the
+    scientific background.  Up to date data are available from the 
+    website given under `?DAAG::ozone`. Replace
+  zeros by missing values.  Determine, for each month, the number of
+  missing values.  Plot the October levels against Year, and fit a
+  smooth curve.  At what point does there seem to be clear evidence of
+  a decline? Plot the data for other months also.  Do other months
+  show a similar pattern of decline?
+:::
+
+A simple way to replace 0's by missing value codes is the following:
+```{r ex14, echo=TRUE}
+names(ozone)
+Ozone <- ozone
+for (i in 2:11){
+    Ozone[ozone[,i]==0, i] <- NA
+}
+```
+
+One way to count up the monthly missing values is the following:
+```{r ozone2, echo=TRUE}
+sapply(Ozone[,-c(1,11)], function(x) sum(is.na(x)))
+```
+
+A plot of the October ozone levels against Year can be obtained as follows: 
+```{r ozone-oct, fig.width=5, fig.height=5, echo=FALSE, out.width='50%'}
+attach(Ozone, warn.conflicts=FALSE)
+plot(Oct ~ Year, ylab = "October ozone levels (DU)", pch=16)
+lines(lowess(Year, Oct, f=.35))
+title(main="Lowess curve fitted to the ozone data")
+detach(Ozone)
+``` 
+
+We see that ozone level is decreasing throughout the period, but there is an acceleration in the mid- to late-1970s.
+
+To plot the data for the other months, we can do the following:
+
+```{r ozone-other, fig.width=7.5, fig.height=7.5, echo=FALSE, out.width='75%'}
+ozone.stk <- stack(Ozone, select=2:10)
+ozone.stk$Year <- rep(seq(1956,2000), 9)
+names(ozone.stk) <- c("Ozone", "Month", "Year")
+ozone.stk$Month <- factor(ozone.stk$Month, levels=c("Aug", "Sep", "Oct",
+                          "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"))
+library(lattice)
+xyplot(Ozone ~ Year|Month, data=ozone.stk,
+       main="Change in ozone levels over time, by month.")
+``` 
+Similar declines are evident in several of the other months. The decline is less steep in some of the other months.

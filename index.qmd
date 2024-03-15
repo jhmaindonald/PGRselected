@@ -1,6 +1,5 @@
 # Preface {.unnumbered}
 
-
 This website makes available solutions to selected exercises
 from the new Cambridge University Press text, due to appear 
 in published form in May or June 2024:

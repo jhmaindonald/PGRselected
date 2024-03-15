@@ -1,0 +1,150 @@
+---
+title: "Answers to Selected Chapter 6 Exercises"
+subtitle: "Time series models"
+date: "2024-03-15"
+output: 
+  html_document: default
+  pdf_document:
+    includes:
+      in_header: "preamble.tex"
+    latex_engine: xelatex
+---
+
+```{css, echo=F}
+.colbox {
+  padding: 1em;
+  background: white;
+  color: black;
+  border: 2px solid orange;
+  border-radius: 10px;
+}
+.center {
+  text-align: left;
+}
+}
+```
+
+```{r, echo=FALSE, include=FALSE}
+library(knitr)
+opts_chunk$set(fig.align='center', fig.show='hold', size="small", ps=10, 
+               out.width="80%", comment=NA, strip.white = TRUE,
+                    tidy.opts = list(replace.assign=FALSE))
+```
+
+```{r}
+library(DAAG)
+```
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 1
+:::
+A time series of length 100 is obtained from an AR(1) model with $\sigma = 1$ and $\alpha = -.5$. What is the standard error of the mean? If the usual $\sigma/\sqrt{n}$ formula were used in constructing a confidence interval for the mean, with $\sigma$ defined as in Section 6.1.4, would it be too narrow or too wide?
+:::
+If we know $\sigma$, then the usual $\sigma/\sqrt{n}$ formula will give an error that is too narrow; refer back to Subsection 6.1.4.
+:::
+The need to estimate $\sigma$ raises an additional complication. If $\sigma$ is estimated by fitting a time series model, e.g., using the function \texttt{ar()}, this estimate of $\sigma$ can be plugged into the formula in Subsection 9.1.3. The note that now follows covers the case where $\sigma^2$ is estimated using the formula 
+$$\hat{\sigma^2} = \frac{\sum(X_i-\bar{X})^2}{n-1}$$ 
+The relevant theoretical results are not given in the text. Their derivation requires a kmowledge of the algebra of expectations.
+
+__Note 1:__ We use the result (proved below)
+$$
+E[(X_i-\mu)^2] = \sigma^2/(1-\alpha^2) 
+$$ 
+and that
+$$
+E[\sum(X_i-\bar{X})^2] = \frac{1}{1-\alpha^2}(n-1-\alpha)\sigma^2\\
+\simeq \frac{1}{1-\alpha^2}(n-1)\sigma^2
+$$
+Hence, if the variance is estimated from the usual formula 
+$\hat{\sigma^2} = \frac{\sum(X_i-\bar{X})^2}{n-1}$, 
+the standard error of the mean will be too small by a factor of approximately $$\sqrt{\frac{1-\alpha}{1+\alpha}}$$.
+
+__Note 2:__ We square both sides of 
+$$ X_t - \mu = \alpha (X_{t-1} - \mu) + \varepsilon_t$$ 
+and take expectations. We have that 
+$$
+E[(X_t - \mu)^2] = (1-\alpha^2)E[(X_t - \mu)^2] + \sigma^2
+$$ 
+from which the result (eq.\@ref(eq1)) follows immediately. To derive $E[\sum(X_i-\bar{X})^2]$, observe that 
+$$
+E[\sum(X_i-\bar{X})^2] = E[(X_t - \mu)^2] - n(\bar{X}-\mu)^2$$
+
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 2
+:::
+Use the `ar` function to fit the second order autoregressive
+model to the Lake Huron time series.
+:::
+```{r ex2, echo=TRUE}
+ar(LakeHuron, order.max=2)
+```
+
+It might however be better not to specify the order, instead allowing the \texttt{ar()} function to choose it, based on the AIC criterion. For this to be valid, it is best to specify also \texttt{method="mle"}. Fitting by maximum likelihood can for long series be very slow. It works well in this instance.
+
+```{r echo=TRUE}
+ar(LakeHuron, method="mle")
+```
+
+The AIC criterion chooses the order equal to 2.
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 3
+:::
+Repeat the analysis of Section 6.2, replacing
+  `mdbrain` by: (i) `southRain`, i.e., annual average
+  rainfall in Southern Australia; (ii) `northRain`, i.e.,
+  annual average rainfall in Northern Australia.
+:::
+The following functions may be used to automate these calculations. First, here is a function that gives the time series plots. `{r bomts} bomts <- function(rain="NTrain"){ plot(ts(bomsoi[, c(rain, "SOI")], start=1900),        panel=function(y,...)panel.smooth(bomsoi$Year, y,...)) }` %
+
+Next, here is a function that automates the calculations and resulting plots, for the analysis used for all-Australian rainfall data. The parameter choices may for some areas need to be varied, but output from this function should be a good start. 
+```{r bomplots}
+bomplots <-
+function(loc="NTrain"){
+oldpar <- par(fig=c(0,0.5,0.5,1), mar=c(3.6,3.6,1.6,0.6), mgp=c(2.25,.5,0))
+    on.exit(par(oldpar))
+    rain <- bomsoi[, loc]
+    xbomsoi <-
+      with(bomsoi, data.frame(SOI=SOI, cuberootRain=rain^0.33))
+    xbomsoi$trendSOI <- lowess(xbomsoi$SOI)$y
+    xbomsoi$trendRain <- lowess(xbomsoi$cuberootRain)$y
+    rainpos <- pretty(rain, 5)
+   par(fig=c(0,0.5,0.5,1), new=TRUE)
+    with(xbomsoi,
+         {plot(cuberootRain ~ SOI, xlab = "SOI",
+               ylab = "Rainfall (cube root scale)", yaxt="n")
+          axis(2, at = rainpos^0.33, labels=paste(rainpos))
+          ## Relative changes in the two trend curves
+          lines(lowess(cuberootRain ~ SOI))
+          lines(lowess(trendRain ~ trendSOI), lwd=2, col="gray40")
+        })
+    xbomsoi$detrendRain <-
+      with(xbomsoi, cuberootRain - trendRain + mean(trendRain))
+    xbomsoi$detrendSOI <-
+      with(xbomsoi, SOI - trendSOI + mean(trendSOI))
+    par(fig=c(.5,1,.5,1),new=TRUE)
+    plot(detrendRain ~ detrendSOI, data = xbomsoi,
+         xlab="Detrended SOI", ylab = "Detrended rainfall", yaxt="n")
+    axis(2, at = rainpos^0.33, labels=paste(rainpos))
+    with(xbomsoi, lines(lowess(detrendRain ~ detrendSOI)))
+    attach(xbomsoi)
+    xbomsoi.ma12 <- arima(detrendRain, xreg=detrendSOI,
+                          order=c(0,0,12))
+    xbomsoi.ma12s <- arima(detrendRain, xreg=detrendSOI,
+                           seasonal=list(order=c(0,0,1), period=12))
+    print(xbomsoi.ma12)
+    print(xbomsoi.ma12s)
+    par(fig=c(0,0.5,0,0.5), new=TRUE)
+    acf(resid(xbomsoi.ma12))
+    par(fig=c(0.5,1,0,0.5), new=TRUE)
+    pacf(resid(xbomsoi.ma12))
+    par(oldpar)
+    detach(xbomsoi)
+  }
+```
+
+Data for further regions of Australia are available from the websites noted on the help page for `bomsoi`.

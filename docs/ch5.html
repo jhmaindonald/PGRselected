@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="John Maindonald">
 <meta name="dcterms.date" content="2024-03-15">
 
-<title>Answers to selected exercises</title>
+<title>Answers to selected exercises - 5&nbsp; Answers to Selected Chapter 5 Exercises</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -32,7 +65,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ch1.html" rel="next">
+<link href="./ch6.html" rel="next">
+<link href="./ch4.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,6 +104,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -82,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Preface</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch5.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 5 Exercises</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -109,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
   </div>
 </li>
@@ -139,7 +202,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ch5.html" class="sidebar-item-text sidebar-link">
+  <a href="./ch5.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 5 Exercises</span></span></a>
   </div>
 </li>
@@ -172,33 +235,22 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#preface" id="toc-preface" class="nav-link active" data-scroll-target="#preface">Preface</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
-<main class="content column-body" id="quarto-document-content">
+<main class="content column-page-right" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Answers to selected exercises</h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 5 Exercises</span></h1>
+<p class="subtitle lead">Generalized linear models and survival analysis</p>
 </div>
 
 
 
-<div class="quarto-title-meta column-body">
+<div class="quarto-title-meta column-page-right">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>John Maindonald </p>
-          </div>
-  </div>
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
@@ -215,15 +267,241 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="preface" class="level1 unnumbered">
-<h1 class="unnumbered">Preface</h1>
-<p>This website makes available solutions to&nbsp;selected exercises from the new Cambridge University Press text, due to appear in published form in May or June 2024:</p>
-<blockquote class="blockquote">
-<p>“A Practical Guide to Data Analysis Using R – An Example-Based Approach”, by John H Maindonald, W John Braun, and Jeffrey L Andrews.</p>
-</blockquote>
+<div class="cell">
+<style type="text/css">
+.colbox {
+  padding: 1em;
+  background: white;
+  color: black;
+  border: 2px solid orange;
+  border-radius: 10px;
+}
+.center {
+  text-align: left;
+}
+}
+</style>
+</div>
+<div class="colbox">
+<div data-latex="">
+<p>Exercise 1</p>
+</div>
+<p>The following table shows numbers of occasions when inhibition (i.e., no flow of current across a membrane) occurred within 120 s, for different concentrations of the protein peptide-C (data are used with the permission of Claudia Haarmann, who obtained these data in the course of her PhD&nbsp;research). The outcome <code>yes</code> implies that inhibition has occurred.</p>
+<pre><code>conc 0.1 0.5  1 10 20 30 50 70 80 100 150
+no     7   1 10  9  2  9 13  1  1   4   3
+yes    0   0  3  4  0  6  7  0  0   1   7</code></pre>
+<p>Use logistic regression to model the probability of inhibition as a function of protein concentration.</p>
+</div>
+<p>It is useful to begin by plotting the logit of the observed proportions against <code>log(conc)</code>. Concentrations are nearer to equally spaced on a scale of relative dose, rather than on a scale of dose, suggesting that it might be appropriate to work with <code>log(conc)</code>. In order to allow plotting of cases where <code>no = 0</code> or <code>yes = 0</code>, we add 0.5 to each count.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch5_files/figure-html/ex1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The plot seems reasonably consistent with the use of <code>log(conc)</code> as the explanatory variable. Code is:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>conc <span class="ot">&lt;-</span> <span class="fu">c</span>(.<span class="dv">1</span>, .<span class="dv">5</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">50</span>, <span class="dv">70</span>, <span class="dv">80</span>, <span class="dv">100</span>, <span class="dv">150</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>no <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">1</span>, <span class="dv">10</span>, <span class="dv">9</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">13</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">3</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>yes <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">0</span>, <span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span> ,<span class="dv">7</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> no <span class="sc">+</span> yes</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(conc), <span class="fu">log</span>((yes<span class="fl">+0.5</span>)<span class="sc">/</span>(no<span class="fl">+0.5</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The code for the regression is: p &lt;- yes/n inhibit.glm &lt;- glm(p ~ I(log(conc)), family=binomial, weights=n) summary(inhibit.glm)</p>
+<pre><code>
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 2
+:::
+In the data set (an artificial one of 3121 patients, that is
+  similar to a subset of the data analyzed in Stiell et al. (2001))
+  `minor.headInjury`, obtain a logistic
+  regression model relating
+  `clinically.important.brain.injury`  to other variables.  
+Patients whose risk is sufficiently high will be sent for CT
+(computed tomography). Using a risk threshold of 0.025 (2.5\%),
+turn the result into a decision rule for use of CT.
+:::
+::: {.cell layout-align="center"}
+
+```{.r .cell-code}
+sapply(headInjury, range)</code></pre>
+<div class="cell-output cell-output-stdout">
+<pre><code>     age.65 amnesia.before basal.skull.fracture GCS.decrease GCS.13
+[1,]      0              0                    0            0      0
+[2,]      1              1                    1            1      1
+     GCS.15.2hours high.risk loss.of.consciousness open.skull.fracture vomiting
+[1,]             0         0                     0                   0        0
+[2,]             1         1                     1                   1        1
+     clinically.important.brain.injury
+[1,]                                 0
+[2,]                                 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>injury.glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(clinically.important.brain.injury <span class="sc">~</span> ., </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data=</span>headInjury, <span class="at">family=</span>binomial)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(injury.glm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = clinically.important.brain.injury ~ ., family = binomial, 
+    data = headInjury)
+
+Coefficients:
+                      Estimate Std. Error z value Pr(&gt;|z|)
+(Intercept)            -4.4972     0.1629 -27.611  &lt; 2e-16
+age.65                  1.3734     0.1827   7.518 5.56e-14
+amnesia.before          0.6893     0.1725   3.996 6.45e-05
+basal.skull.fracture    1.9620     0.2064   9.504  &lt; 2e-16
+GCS.decrease           -0.2688     0.3680  -0.730 0.465152
+GCS.13                  1.0613     0.2820   3.764 0.000168
+GCS.15.2hours           1.9408     0.1663  11.669  &lt; 2e-16
+high.risk               1.1115     0.1591   6.984 2.86e-12
+loss.of.consciousness   0.9554     0.1959   4.877 1.08e-06
+open.skull.fracture     0.6304     0.3151   2.001 0.045424
+vomiting                1.2334     0.1961   6.290 3.17e-10
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 1741.6  on 3120  degrees of freedom
+Residual deviance: 1201.3  on 3110  degrees of freedom
+AIC: 1223.3
+
+Number of Fisher Scoring iterations: 6</code></pre>
+</div>
+<p>:::</p>
+<p>Observe that <code>log(.025/(1-.025)) = -3.66</code>, an increase of 0.84 above the intercept (= -4.50). This change in risk results from (1) <code>GCS.decrease</code> with any other individual factor except <code>amnesia.before</code>, <code>GCS.decrease</code> and <code>open.skull.fracture</code>; (2) <code>GCS.decrease</code> with any two of <code>amnesia.before</code>, <code>open.skull.fracture</code> and <code>loss.of.consciousness</code>; (3) any of the individual factors <code>age.65</code>, <code>basal.skull.fracture</code>, <code>GCS.15.2hours</code>, <code>high.risk</code> and <code>vomiting</code>, irrespective of the levels of other factors.</p>
+<div class="colbox">
+<div data-latex="">
+<p>Exercise 3</p>
+</div>
+<p>Consider again the <code>moths</code> data set of Subsection 5.4.2.</p>
+<ul>
+<li>What happens to the standard error estimates when the <code>poisson</code> family is used in <code>glm()</code> instead of the <code>quasipoisson</code> family?</li>
+<li>Analyze the <code>P</code> moths, in the same way as the <code>A</code> moths were analyzed. Comment on the effect of transect length.</li>
+</ul>
+</div>
+<ul>
+<li>The dispersion estimate was 2.7. Use of the <code>quasipoisson</code> family has the effect of increasing SEs by a factor of <span class="math inline">\(\sqrt{2.7}\)</span>, relative to the <code>poisson</code> family. SEs on pp.265 will thus be reduced by this factor if the <code>poisson</code> family is (inappropriately) specified.<br>
+</li>
+<li></li>
+</ul>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">split</span>(moths<span class="sc">$</span>P, moths<span class="sc">$</span>habitat), sum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Bank Disturbed Lowerside    NEsoak    NWsoak    SEsoak    SWsoak Upperside 
+        4        33        17        14        19         6        48         8 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>moths<span class="sc">$</span>habitat <span class="ot">&lt;-</span> <span class="fu">relevel</span>(moths<span class="sc">$</span>habitat, <span class="at">ref=</span><span class="st">"Lowerside"</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>P.glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(P <span class="sc">~</span> habitat <span class="sc">+</span> <span class="fu">log</span>(meters), <span class="at">family=</span>quasipoisson, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">data=</span>moths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The highest numbers are now for <code>SWsoak</code> and for <code>Disturbed</code> The number of moths increases with transect length, by a factor of approximately 1.74 (= <span class="math inline">\(e^.55\)</span>) for each one meter increase in transect length. \end{enumerate} ````</p>
+<div class="colbox">
+<div data-latex="">
+<p>Exercise 4</p>
+</div>
+<p>*The factor <code>dead</code> in the data set <code>mifem</code> (<em>DAAG</em> package) gives the mortality outcomes (<code>live</code> or <code>dead</code>), for 1295 female subjects who suffered a myocardial infarction. (See Subsection 8.3.1 for further details.) Determine ranges for <code>age</code> and <code>yronset</code> (year of onset), and determine tables of counts for each separate factor. Decide how to handle cases for which the outome, for one or more factors, is not known. Fit a logistic regression model, beginning by comparing the model that includes all two-factor interactions with the model that has main effects only.</p>
+</div>
+<p>First, examine various summary information:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mifem)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   1295 obs. of  10 variables:
+ $ outcome : Factor w/ 2 levels "live","dead": 1 1 1 1 2 1 1 2 2 2 ...
+ $ age     : num  63 55 68 64 67 66 63 68 46 66 ...
+ $ yronset : num  85 85 85 85 85 85 85 85 85 85 ...
+ $ premi   : Factor w/ 3 levels "y","n","nk": 2 2 1 2 2 2 2 1 2 1 ...
+ $ smstat  : Factor w/ 4 levels "c","x","n","nk": 2 1 4 2 4 2 3 3 1 1 ...
+ $ diabetes: Factor w/ 3 levels "y","n","nk": 2 2 3 2 3 3 2 2 2 2 ...
+ $ highbp  : Factor w/ 3 levels "y","n","nk": 1 1 1 1 3 3 1 1 1 1 ...
+ $ hichol  : Factor w/ 3 levels "y","n","nk": 1 1 3 2 3 3 2 1 3 2 ...
+ $ angina  : Factor w/ 3 levels "y","n","nk": 2 2 1 1 3 3 2 1 3 2 ...
+ $ stroke  : Factor w/ 3 levels "y","n","nk": 2 2 2 2 3 3 2 1 2 1 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(mifem[, <span class="fu">c</span>(<span class="st">"age"</span>, <span class="st">"yronset"</span>)], range)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     age yronset
+[1,]  35      85
+[2,]  69      93</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lapply</span>(mifem[, <span class="sc">-</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)], table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$premi
+
+  y   n  nk 
+311 928  56 
+
+$smstat
+
+  c   x   n  nk 
+390 280 522 103 
+
+$diabetes
+
+  y   n  nk 
+248 978  69 
+
+$highbp
+
+  y   n  nk 
+813 406  76 
+
+$hichol
+
+  y   n  nk 
+452 655 188 
+
+$angina
+
+  y   n  nk 
+472 724  99 
+
+$stroke
+
+   y    n   nk 
+ 153 1063   79 </code></pre>
+</div>
+</div>
+<p>For all of the factors, there are a large number of nk’s, i.e., <em>not known</em>. A straightforward way to handle them is to treat <code>nk</code> as a factor level that, as for <code>y</code> and <code>n</code>, may give information that helps predict the outcome. For ease of interpretation we will make <code>n</code>, the reference level.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">4</span><span class="sc">:</span><span class="dv">10</span>)mifem[,j] <span class="ot">&lt;-</span> <span class="fu">relevel</span>(mifem[,j], <span class="at">ref=</span><span class="st">"n"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>mifem1.glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(outcome <span class="sc">~</span> ., <span class="at">family=</span>binomial, <span class="at">data=</span>mifem)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>mifem2.glm <span class="ot">&lt;-</span> <span class="fu">glm</span>(outcome <span class="sc">~</span> .<span class="sc">^</span><span class="dv">2</span>, <span class="at">family=</span>binomial, <span class="at">data=</span>mifem)</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">anova</span>(mifem1.glm, mifem2.glm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Analysis of Deviance Table
+
+Model 1: outcome ~ age + yronset + premi + smstat + diabetes + highbp + 
+    hichol + angina + stroke
+Model 2: outcome ~ (age + yronset + premi + smstat + diabetes + highbp + 
+    hichol + angina + stroke)^2
+  Resid. Df Resid. Dev  Df Deviance
+1      1277     1172.6             
+2      1152     1013.8 125   158.87</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">CVbinary</span>(mifem1.glm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Fold:  7 9 2 5 1 10 8 4 3 6
+Internal estimate of accuracy = 0.807
+Cross-validation estimate of accuracy = 0.803</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">CVbinary</span>(mifem2.glm)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Fold:  10 6 8 4 3 1 7 2 5 9
+Internal estimate of accuracy = 0.839
+Cross-validation estimate of accuracy = 0.791</code></pre>
+</div>
+</div>
+<p>Warning messages that “fitted probabilities numerically 0 or 1 occurred” have been suppressed in the output shown.</p>
+<p>The difference in deviance suggests a real difference (<code>pchisq(125,159) = 0.021</code>). Here, however, the chi-squared approximation to the change in deviance should be queried.</p>
+<p>It is safer to compare the cross-validated accuracy estimates, which in individual cross-validation runs were marginally lower for <code>mifem2.glm</code> than for <code>mifem2.glm</code>; 0.78 as against 0.80. Note also that there were convergence problems for the model that included all first order interaction terms.</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -613,12 +891,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-<nav class="page-navigation column-body">
+<nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
+      <a 4="" href="./ch4.html" class="pagination-link  aria-label=" &lt;span="" to="" selected="" chapter="" exercises&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 4 Exercises</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch1.html" class="pagination-link" aria-label="<span class='chapter-number'>1</span>&nbsp; <span class='chapter-title'>Answers to Selected Chapter 1 Exercises</span>">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 1 Exercises</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch6.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>Answers to Selected Chapter 6 Exercises</span>">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 6 Exercises</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

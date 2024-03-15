@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2024-03-15">
 
-<title>Answers to selected exercises - 1&nbsp; Answers to Selected Chapter 1 Exercises</title>
+<title>Answers to selected exercises - 8&nbsp; Answers to Selected Chapter 8 Exercises</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +65,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./ch2.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./ch9.html" rel="next">
+<link href="./ch7.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -104,6 +104,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -116,7 +145,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch1.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 1 Exercises</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ch8.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 8 Exercises</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -149,7 +178,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ch1.html" class="sidebar-item-text sidebar-link active">
+  <a href="./ch1.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 1 Exercises</span></span></a>
   </div>
 </li>
@@ -191,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./ch8.html" class="sidebar-item-text sidebar-link">
+  <a href="./ch8.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 8 Exercises</span></span></a>
   </div>
 </li>
@@ -214,8 +243,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 1 Exercises</span></h1>
-<p class="subtitle lead">Learning from data, and tools for the task</p>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 8 Exercises</span></h1>
+<p class="subtitle lead">Tree-based Classification and Regression</p>
 </div>
 
 
@@ -251,230 +280,283 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   text-align: left;
 }
 }
-
 </style>
 </div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DAAG)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-layout-align="center" data-quiet="true">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DAAG)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rpart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="colbox">
 <div data-latex="">
 <p>Exercise 1</p>
 </div>
-<p>The data frame DAAG::orings has details of damage that had occurred in US space shuttle launches prior to the disastrous Challenger launch of January 28, 1986. Observations in rows 1, 2, 4, 11, 13, and 18 were shown in the pre-launch charts used in deciding whether to proceed with the launch, with remaining rows omitted.</p>
-<p>Compare plots of Total incidents against Temperature: (i) including only the observations shown in the pre-launch charts; and (ii) using all rows of data. What did the full set of data strongly suggest that was less clear from the plot that showed only the selected rows?</p>
+<p>Refer to the <code>DAAG::headInjury</code> data frame.</p>
+<ol type="a">
+<li><p>Use the default setting in <code>rpart()</code> to obtain a tree-based model for predicting occurrence of clinically important brain injury, given the other variables.</p></li>
+<li><p>How many splits gives the minimum cross-validation error?</p></li>
+<li><p>Prune the tree using the 1 standard error rule.</p></li>
+</ol>
 </div>
-<p>Use the following to extract rows that hold the data that were presented in the pre-launch charts:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>orings86 <span class="ot">&lt;-</span> DAAG<span class="sc">::</span>orings[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">11</span>,<span class="dv">13</span>,<span class="dv">18</span>), ]</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lattice)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>gph1 <span class="ot">&lt;-</span> <span class="fu">xyplot</span>(Total <span class="sc">~</span> Temperature, <span class="at">data=</span>orings86, <span class="at">pch=</span><span class="dv">16</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>gph2 <span class="ot">&lt;-</span> <span class="fu">xyplot</span>(Total <span class="sc">~</span> Temperature, <span class="at">data=</span>DAAG<span class="sc">::</span>orings)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="st">"Points in pre-launch charts"</span><span class="ot">=</span>gph1,<span class="st">"All Points"</span> <span class="ot">=</span> gph2, <span class="at">y.same=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="ch1_files/figure-html/ex3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Points are best shown with filled symbols in the first plot, and with open symbols in the second plot. (Why?)</p>
-<div class="colbox">
-<div data-latex="">
-<p>Exercise 7</p>
-</div>
-<p>Plot a histogram of the <code>earconch</code> measurements for the <code>possum</code> data. The distribution should appear <em>bimodal</em> (two peaks). This is a simple indication of clustering, possibly due to sex differences. Obtain side-by-side boxplots of the male and female measurements. How do these measurement distributions differ? Can you predict what the corresponding histograms would look like? Plot them to check your answer.</p>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="ch1_files/figure-html/ex7-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>possum <span class="ot">&lt;-</span> DAAG<span class="sc">::</span>possum</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="at">mar=</span><span class="fu">c</span>(<span class="fl">4.1</span>,<span class="fl">4.1</span>,<span class="fl">1.6</span>,<span class="fl">0.6</span>))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(possum<span class="sc">$</span>earconch, <span class="at">main=</span><span class="st">""</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(earconch <span class="sc">~</span> sex, <span class="at">data=</span>possum, <span class="at">horizontal=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The left panel shows a histogram of possum ear conch measurements. The right panel shows side by side boxplots of the measurements, one for each sex. A horizontal layout is often advantageous.</p>
-<p>Note the alternative to <code>boxplot()</code> that uses the <em>lattice</em> function <code>bwplot()</code>. Placing <code>sex</code> on the left of the graphics formula leads to horizontal boxplots.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">bwplot</span>(sex <span class="sc">~</span> earconch, <span class="at">data=</span>possum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The following uses the <em>lattice</em> function to give side by side histograms:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">histogram</span>(<span class="sc">~</span> earconch <span class="sc">|</span> sex, <span class="at">data=</span>possum)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="ch1_files/figure-html/histogram-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Density plots, in addition to avoiding what has to be a largely arbitrary choice of cutpoints, are easy to overlay.</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">densityplot</span>(<span class="sc">~</span>earconch, <span class="at">data=</span>DAAG<span class="sc">::</span>possum, <span class="at">groups=</span>sex, </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">auto.key=</span><span class="fu">list</span>(<span class="at">columns=</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="ch1_files/figure-html/ex7x-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="colbox">
-<div data-latex="">
-<p>Exercise 8</p>
-</div>
-<p>For the data frame <code>ais</code> (<em>DAAG</em> package), draw graphs that show how the values of the hematological measures (red cell count, hemoglobin concentration, hematocrit, white cell count and plasma ferritin concentration) vary with the sport and sex of the athlete.</p>
-</div>
-<p>The plots that follow show one possibility that gives a relatively compact presentation:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="ch1_files/figure-html/ex8-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="ch1_files/figure-html/ex8-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The final 2 in layout=c(2,3,2) spills the panels for the final two&nbsp;measures over onto a second page.</p>
-<div class="colbox">
-<div data-latex="">
-<p>Exercise 14</p>
-</div>
-<p>An experimenter intends to arrange experimental plots in four blocks. In each block there are seven plots, one for each of seven treatments. Use the function to find four random permutations of the numbers 1 to 7 that will be used, one set in each block, to make the assignments of treatments to plots.</p>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)<span class="fu">print</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol type="a">
+<li></li>
+</ol>
+<div class="cell" data-layout-align="center" data-ou.width="50%">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">29</span>)         <span class="do">## Gives the results presented here</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>injury.rpart <span class="ot">&lt;-</span> <span class="fu">rpart</span>(clinically.important.brain.injury <span class="sc">~</span> ., </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">data=</span>headInjury, <span class="at">method=</span><span class="st">"class"</span>, <span class="at">cp=</span><span class="fl">0.0001</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(injury.rpart)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">printcp</span>(injury.rpart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 7 6 1 5 2 4 3
-[1] 5 3 7 6 4 2 1
-[1] 4 2 7 1 6 5 3
-[1] 2 5 7 4 1 6 3</code></pre>
+<pre><code>
+Classification tree:
+rpart(formula = clinically.important.brain.injury ~ ., data = headInjury, 
+    method = "class", cp = 1e-04)
+
+Variables actually used in tree construction:
+[1] age.65                amnesia.before        basal.skull.fracture 
+[4] GCS.13                GCS.15.2hours         high.risk            
+[7] loss.of.consciousness vomiting             
+
+Root node error: 250/3121 = 0.080103
+
+n= 3121 
+
+      CP nsplit rel error xerror     xstd
+1 0.0400      0     1.000  1.000 0.060660
+2 0.0360      2     0.920  1.008 0.060881
+3 0.0140      3     0.884  0.940 0.058965
+4 0.0080      5     0.856  0.932 0.058734
+5 0.0001     10     0.816  0.924 0.058502</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Store results in the columns of a matrix</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="do">## The following is mildly cryptic</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="cf">function</span>(x)<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch8_files/figure-html/ex1a-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The setting <code>cp=0.0001</code> was reached after some experimentation.</p>
+<ol start="2" type="a">
+<li><p>The minimum cross-validated relative error is for <code>nsplit=3</code>, i.e., for a tree size of 4.</p></li>
+<li><p>The one-standard-error rule likewise chooses <code>nsplit=3</code>, with <code>cp=0.014</code>. Setting <code>cp=0.02</code>, i.e., larger than <code>cp</code> for the next smallest number of splits, will prune the tree back to this size. We have</p></li>
+</ol>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>injury0.rpart <span class="ot">&lt;-</span> <span class="fu">prune</span>(injury.rpart, <span class="at">cp=</span><span class="fl">0.02</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We plot the tree from (a) that shows the cross-validated relative error, and the tree obtained from (c).</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch8_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Plots are from the <code>rpart</code> analysis of the head injury data: (i) cross-validated relative error versus <code>cp</code>; and (ii) the tree obtained in (c).</p>
+<p>There can be substantial change from one run to the next.</p>
+<div class="colbox">
+<div data-latex="">
+<p>Exercise 2</p>
+</div>
+<p>The data set <code>mifem</code> is part of the larger data set in the data frame <code>monica</code> that we have included in our <em>DAAG</em> package. Use tree-based regression to predict mortality in this larger data set. What is the most immediately striking feature of your analysis? Should this be a surprise?</p>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>monica.rpart <span class="ot">&lt;-</span> <span class="fu">rpart</span>(outcome <span class="sc">~</span> ., <span class="at">data=</span>monica, <span class="at">method=</span><span class="st">"class"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(monica.rpart)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">text</span>(monica.rpart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch8_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Those who were not hospitalized were very likely to be dead! Check by examining the table:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(monica<span class="sc">$</span>hosp, monica<span class="sc">$</span>outcome)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>     [,1] [,2] [,3] [,4]
-[1,]    4    4    2    6
-[2,]    3    5    7    5
-[3,]    1    6    6    3
-[4,]    7    3    4    4
-[5,]    6    7    5    2
-[6,]    5    2    3    7
-[7,]    2    1    1    1</code></pre>
+<pre><code>   
+    live dead
+  y 3522  920
+  n    3 1922</code></pre>
 </div>
 </div>
 <div class="colbox">
 <div data-latex="">
-<p>Exercise 15</p>
+<p>Exercise 3</p>
 </div>
-<p>The following data represent the total number of aberrant crypt foci (abnormal growths in the colon) observed in 7 rats that had been administered a single dose of the carcinogen azoxymethane and sacrificed after six weeks:</p>
-<pre><code>87 53 72 90 78 85 83</code></pre>
-<p>Enter these data and compute their sample mean and variance. Is the Poisson model appropriate for these data. To investigate how the sample variance and sample mean differ under the Poisson assumption, repeat the following simulation experiment several times:</p>
+<p>Use tree-based regression to predict <code>re78</code> in the data frame <code>nsw74pred1</code> that is in our <em>DAAG</em> package. Compare the predictions with the multiple regression predictions in Chapter 3. [<strong>Note:</strong> The reference to a regression calculation in Chapter 3 is a mistake]</p>
+</div>
+<p>In order to reproduce the same results as given here, do:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">7</span>, <span class="fl">78.3</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x); <span class="fu">var</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
+<p>Code for the initial calculation is:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">87</span>, <span class="dv">53</span>, <span class="dv">72</span>, <span class="dv">90</span>, <span class="dv">78</span>, <span class="dv">85</span>, <span class="dv">83</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">mean=</span><span class="fu">mean</span>(y), <span class="at">variance=</span><span class="fu">var</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>     mean  variance 
- 78.28571 159.90476 </code></pre>
-</div>
-</div>
-<p>Then try</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rpois</span>(<span class="dv">7</span>, <span class="fl">78.3</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">mean=</span><span class="fu">mean</span>(x), <span class="at">variance=</span><span class="fu">var</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    mean variance 
-76.57143 36.95238 </code></pre>
-</div>
-</div>
-<p>It is unusual to get as big a difference between the mean and the variance as that observed for these data, making it doubtful that these data are from a Poisson distribution.</p>
-<div class="colbox">
-<div data-latex="">
-<p>Exercise 21</p>
-</div>
-<p>The following code generates random normal numbers with a sequential dependence structure:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">51</span>) </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>ydep <span class="ot">&lt;-</span> y[<span class="sc">-</span><span class="dv">1</span>] <span class="sc">+</span> y[<span class="sc">-</span><span class="dv">51</span>] </span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(y, <span class="at">main=</span><span class="st">'A: iid normal values'</span>) </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="fu">acf</span>(ydep, <span class="at">main=</span><span class="st">'B: Sequentially dependent'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Repeat this several times. There should be no consistent pattern in the acf plot for different iid (independently and identically distributed) random samples <code>y</code>, and a fairly consistent pattern in the acf plot for <code>ydep</code> that reflects the correlation that is introduced by adding to each value of y the next value in the sequence.</p>
-</div>
-<p>The following should be repeated several times:</p>
-<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>nsw.rpart <span class="ot">&lt;-</span> <span class="fu">rpart</span>(re78<span class="sc">~</span>., <span class="at">data=</span>DAAG<span class="sc">::</span>nsw74psid1, <span class="at">cp=</span><span class="fl">0.001</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(nsw.rpart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="ch1_files/figure-html/ex21-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:48.0%"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="ch1_files/figure-html/ex21-2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:48.0%"></p>
+<p><img src="ch8_files/figure-html/ex3-initial-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>In most plots, a lag 1 autocorrelation that is outside of the error bounds shown by the dashed horizontal lines should be evident in the second plot.</p>
+<p>It is obvious that <code>cp=0.002</code> will be adequate. At this point, the following is a matter of convenience, to reduce the printed output:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>nsw.rpart <span class="ot">&lt;-</span> <span class="fu">prune</span>(nsw.rpart, <span class="at">cp=</span><span class="fl">0.002</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">printcp</span>(nsw.rpart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Regression tree:
+rpart(formula = re78 ~ ., data = DAAG::nsw74psid1, cp = 0.001)
+
+Variables actually used in tree construction:
+[1] age  educ re74 re75
+
+Root node error: 6.5346e+11/2675 = 244284318
+
+n= 2675 
+
+          CP nsplit rel error  xerror     xstd
+1  0.3446296      0   1.00000 1.00109 0.046338
+2  0.1100855      1   0.65537 0.66133 0.039153
+3  0.0409403      2   0.54528 0.55537 0.033258
+4  0.0317768      3   0.50434 0.51980 0.035127
+5  0.0158188      4   0.47257 0.51599 0.035373
+6  0.0105727      5   0.45675 0.49304 0.034834
+7  0.0105337      6   0.44618 0.47727 0.034672
+8  0.0063341      7   0.43564 0.47631 0.035349
+9  0.0056603      8   0.42931 0.47566 0.035395
+10 0.0038839      9   0.42365 0.46207 0.034858
+11 0.0035516     10   0.41976 0.46316 0.035763
+12 0.0031768     11   0.41621 0.46473 0.035912
+13 0.0028300     12   0.41304 0.46682 0.035974
+14 0.0027221     13   0.41021 0.46385 0.034807
+15 0.0023286     15   0.40476 0.46397 0.034706
+16 0.0020199     16   0.40243 0.46656 0.034689
+17 0.0020000     17   0.40041 0.46756 0.034672</code></pre>
+</div>
+</div>
+<p>The minimum cross-validated relative error is at <code>nsplit=12</code>. The one standard error limit is 0.498 (=0.463+0.035). The one standard error rule suggests taking <code>nsplit=5</code>.</p>
+<p>If we go with the one standard error rule, we have a residual variance equal to 244284318 <span class="math inline">\(\times\)</span> 0.49177 = 120131699.</p>
+<p>For the estimate of residual variance from the calculations of Section 6.x, we do the following.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(nsw74psid1)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>here <span class="ot">&lt;-</span> age <span class="sc">&lt;=</span> <span class="dv">40</span> <span class="sc">&amp;</span> re74 <span class="sc">&lt;=</span> <span class="dv">5000</span> <span class="sc">&amp;</span> re75 <span class="sc">&lt;=</span> <span class="dv">5000</span> <span class="sc">&amp;</span> re78 <span class="sc">&lt;</span> <span class="dv">30000</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>nsw74psidA <span class="ot">&lt;-</span> nsw74psid1[here, ]</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">detach</span>(nsw74psid1)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>A1.lm <span class="ot">&lt;-</span> <span class="fu">lm</span>(re78 <span class="sc">~</span> trt <span class="sc">+</span> (age <span class="sc">+</span> educ <span class="sc">+</span> re74 <span class="sc">+</span> re75) <span class="sc">+</span> (black <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>      hisp <span class="sc">+</span> marr <span class="sc">+</span> nodeg), <span class="at">data =</span> nsw74psidA)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(A1.lm)<span class="sc">$</span>sigma<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 40177577</code></pre>
+</div>
+</div>
+<p>The variance estimate is 40177577. This is about a third of the variance estimate that was obtained with tree-based regression.</p>
 <div class="colbox">
 <div data-latex="">
-<p>Exercise 22</p>
+<p>Exercise 4</p>
 </div>
-<p>Assuming that the variability in egg length in the cuckoo eggs data is the same for all host birds, obtain an estimate of the pooled standard deviation as a way of summarizing this variability. [Hint: Remember to divide the appropriate sums of squares by the number of degrees of freedom remaining after estimating the six different means.]</p>
+<p>The complete email spam dataset is available from https://archive.ics.uci.edu/dataset/94/spambase or from the <em>bayesreg</em> package. Carry out a tree-based regression using all 57 available explanatory variables. Determine the change in the cross-validation estimate of predictive accuracy.</p>
 </div>
+<p>We set the random number seed to 21, to allow users to reproduce our results. In most other contexts, it will be best not to set a seed.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>cuckoos <span class="ot">&lt;-</span> DAAG<span class="sc">::</span>cuckoos</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(cuckoos, is.factor)   <span class="co"># Check which columns are factors</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code> length breadth species      id 
-  FALSE   FALSE    TRUE   FALSE </code></pre>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">'spambase'</span>, <span class="at">package=</span><span class="st">'bayesreg'</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="do">## For ease of labeling output, specify short names.  </span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Use the following, or do, e.g., nam &lt;- c(paste0('v',1:57), 'yesno')</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>nam <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"make"</span>, <span class="st">"address"</span>, <span class="st">"all"</span>, <span class="st">"threeD"</span>, <span class="st">"our"</span>, <span class="st">"over"</span>, <span class="st">"remove"</span>, </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="st">"internet"</span>, <span class="st">"order"</span>, <span class="st">"mail"</span>, <span class="st">"receive"</span>, <span class="st">"will"</span>, <span class="st">"people"</span>, <span class="st">"report"</span>, </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="st">"addresses"</span>, <span class="st">"free"</span>, <span class="st">"business"</span>, <span class="st">"email"</span>, <span class="st">"you"</span>, <span class="st">"credit"</span>, <span class="st">"your"</span>, </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="st">"font"</span>, <span class="st">"n000"</span>, <span class="st">"money"</span>, <span class="st">"hp"</span>, <span class="st">"hpl"</span>, <span class="st">"george"</span>, <span class="st">"n650"</span>, <span class="st">"lab"</span>, </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="st">"labs"</span>, <span class="st">"telnet"</span>, <span class="st">"n857"</span>, <span class="st">"data"</span>, <span class="st">"n415"</span>, <span class="st">"n85"</span>, <span class="st">"technology"</span>, </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="st">"n1999"</span>, <span class="st">"parts"</span>, <span class="st">"pm"</span>, <span class="st">"direct"</span>, <span class="st">"cs"</span>, <span class="st">"meeting"</span>, <span class="st">"original"</span>, </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="st">"project"</span>, <span class="st">"re"</span>, <span class="st">"edu"</span>, <span class="st">"table"</span>, <span class="st">"conference"</span>, <span class="st">"semicolon"</span>, <span class="st">"leftparen"</span>, </span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="st">"leftbrack"</span>, <span class="st">"bang"</span>, <span class="st">"dollar"</span>, <span class="st">"hash"</span>, <span class="st">"crl.av"</span>, <span class="st">"crl.long"</span>, </span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="st">"crl.tot"</span>, <span class="st">"yesno"</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(spambase) <span class="ot">&lt;-</span> nam</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>specnam <span class="ot">&lt;-</span> <span class="fu">levels</span>(cuckoos<span class="sc">$</span>species)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>ss <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>ndf <span class="ot">&lt;-</span> <span class="dv">0</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(nam <span class="cf">in</span> specnam){</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  lgth <span class="ot">&lt;-</span> cuckoos<span class="sc">$</span>length[cuckoos<span class="sc">$</span>species<span class="sc">==</span>nam]</span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  ss <span class="ot">&lt;-</span> ss <span class="sc">+</span> <span class="fu">sum</span>((lgth <span class="sc">-</span> <span class="fu">mean</span>(lgth))<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  ndf <span class="ot">&lt;-</span> ndf <span class="sc">+</span> <span class="fu">length</span>(lgth) <span class="sc">-</span> <span class="dv">1</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(ss<span class="sc">/</span>ndf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9051987</code></pre>
-</div>
-</div>
-<p>A more cryptic solution is:</p>
+<p>Now load <em>rpart</em> and proceed with the calculations.</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>diffs <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">sapply</span>(<span class="fu">split</span>(cuckoos<span class="sc">$</span>length, cuckoos<span class="sc">$</span>species), </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>                <span class="cf">function</span>(x)x<span class="sc">-</span><span class="fu">mean</span>(x)))</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">sapply</span>(<span class="fu">split</span>(cuckoos<span class="sc">$</span>length, cuckoos<span class="sc">$</span>species), </span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>             <span class="cf">function</span>(x)<span class="fu">length</span>(x) <span class="sc">-</span> <span class="dv">1</span>))</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">sum</span>(diffs<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">sum</span>(df))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">21</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>spam.rpart <span class="ot">&lt;-</span> <span class="fu">rpart</span>(yesno<span class="sc">~</span>., <span class="at">data=</span>spambase, <span class="at">cp=</span><span class="fl">0.0001</span>, <span class="at">method=</span><span class="st">"class"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">printcp</span>(spam.rpart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Classification tree:
+rpart(formula = yesno ~ ., data = spambase, method = "class", 
+    cp = 1e-04)
+
+Variables actually used in tree construction:
+ [1] address    addresses  all        bang       business   conference
+ [7] credit     crl.av     crl.long   crl.tot    cs         direct    
+[13] dollar     edu        email      font       free       george    
+[19] hash       hp         hpl        internet   lab        labs      
+[25] leftbrack  leftparen  mail       make       money      n1999     
+[31] n415       n650       n857       order      original   over      
+[37] parts      people     pm         receive    remove     report    
+[43] table      threeD     will       you        your      
+
+Root node error: 4486/4601 = 0.97501
+
+n= 4601 
+
+           CP nsplit rel error  xerror      xstd
+1  0.00587011      0   1.00000 1.00000 0.0023604
+2  0.00222916      3   0.98239 0.98373 0.0029934
+3  0.00217343      4   0.98016 0.98417 0.0029781
+4  0.00200624      9   0.96879 0.98417 0.0029781
+5  0.00156041     11   0.96478 0.97994 0.0031198
+6  0.00133749     15   0.95854 0.97303 0.0033355
+7  0.00118888     16   0.95720 0.96991 0.0034275
+8  0.00111458     20   0.95230 0.96634 0.0035290
+9  0.00104027     29   0.94226 0.96589 0.0035414
+10 0.00100312     32   0.93914 0.96567 0.0035476
+11 0.00094739     34   0.93714 0.96322 0.0036148
+12 0.00089166     38   0.93335 0.96099 0.0036745
+13 0.00085451     42   0.92978 0.96010 0.0036981
+14 0.00080250     48   0.92465 0.95854 0.0037388
+15 0.00078021     53   0.92064 0.95698 0.0037789
+16 0.00075791     55   0.91908 0.95586 0.0038073
+17 0.00074305     69   0.90816 0.95586 0.0038073
+18 0.00066875     85   0.89523 0.95074 0.0039341
+19 0.00059444    110   0.87829 0.94739 0.0040139
+20 0.00057958    114   0.87584 0.94516 0.0040658
+21 0.00055729    119   0.87294 0.94583 0.0040504
+22 0.00052014    127   0.86848 0.94583 0.0040504
+23 0.00044583    130   0.86692 0.93914 0.0042017
+24 0.00039010    193   0.83794 0.93981 0.0041869
+25 0.00037153    197   0.83638 0.93981 0.0041869
+26 0.00035667    209   0.83148 0.93981 0.0041869
+27 0.00033437    214   0.82969 0.93981 0.0041869
+28 0.00027864    218   0.82835 0.93959 0.0041919
+29 0.00022292    226   0.82613 0.93959 0.0041919
+30 0.00011146    241   0.82278 0.93781 0.0042311
+31 0.00010000    243   0.82256 0.93803 0.0042262</code></pre>
+</div>
+</div>
+<p>Figure @ref(spam) shows the plot of cross-validated relative error versus <code>cp</code>, for the full <code>spam</code> data set. For making a decision on the size of tree however, it is convenient to work from the information given by the function <code>printcp()</code>.</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plotcp</span>(spam.rpart)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="ch8_files/figure-html/spam-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Setting <code>cp=0.0001</code> ensures, when the random number seed is set to 21, that the cross-validated relative error reaches a minimum, of 0.1958, at <code>nsplit=43</code>. Pruning to get the tree that is likely to have best predictive power can use <code>cp=0.001</code>. Adding the SE to the minimum cross-validated relative error gives 0.2. The smallest tree with an SE smaller than this is at <code>nsplit=36</code>; setting <code>cp=0.0012</code> will give this tree.</p>
+<p>Here then are the two prunings:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>spam.rpart1 <span class="ot">&lt;-</span> <span class="fu">prune</span>(spam.rpart, <span class="at">cp=</span><span class="fl">0.001</span>)  <span class="co"># Minimum predicted error</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>spam.rpart2 <span class="ot">&lt;-</span> <span class="fu">prune</span>(spam.rpart, <span class="at">cp=</span><span class="fl">0.0012</span>) <span class="co"># 1 SE pruning</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -869,13 +951,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation column-page-right">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link  aria-label=" preface"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a 7="" href="./ch7.html" class="pagination-link  aria-label=" &lt;span="" to="" selected="" chapter="" exercises&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 7 Exercises</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./ch2.html" class="pagination-link" aria-label="<span class='chapter-number'>2</span>&nbsp; <span class='chapter-title'>Answers to Selected Chapter 2 Exercises</span>">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 2 Exercises</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./ch9.html" class="pagination-link" aria-label="<span class='chapter-number'>9</span>&nbsp; <span class='chapter-title'>Answers to Selected Chapter 9 Exercises</span>">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Answers to Selected Chapter 9 Exercises</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

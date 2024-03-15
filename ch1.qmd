@@ -1,7 +1,7 @@
 ---
 title: "Answers to Selected Chapter 1 Exercises"
-author: "John Maindonald"
-date: "`r Sys.Date()`"
+subtitle: "Learning from data, and tools for the task"
+date: "2024-03-15"
 output: 
   html_document: default
   pdf_document:
@@ -30,20 +30,7 @@ opts_chunk$set(fig.align='center', fig.show='hold', size="small", ps=10,
                     tidy.opts = list(replace.assign=FALSE))
 ```
 
-<!-- ```{r setup, cache=FALSE, echo=FALSE} -->
-<!-- Hmisc::knitrSet(basename="intro", fig.path="figs/g", w=7, h=7) -->
-<!-- oldopt <- options(digits=4, formatR.arrow=FALSE, width=70, scipen=999) -->
-<!-- knitr::render_listings() -->
-<!-- library(knitr) -->
-<!-- opts_chunk$set(cache.path='cache-', fig.align='center', fig.show='hold', size="small", ps=10, out.width="0.8\\textwidth", comment=NA) -->
-<!-- opts_chunk[['set']](cache.path='cache-', out.width="0.8\\textwidth",  -->
-<!--                     fig.align="center", -->
-<!--                     fig.show='hold', size="small", ps=10, strip.white = TRUE, -->
-<!--                     out.width="0.8\\textwidth", comment=NA, -->
-<!--                     width=70, comment=NA, tidy.opts = list(replace.assign=FALSE)) -->
-<!-- ``` -->
-
-
+```{r}
 library(DAAG)
 ```
 
@@ -76,17 +63,18 @@ Exercise 7
 Plot a histogram of the `earconch` measurements for the `possum` data. The distribution should appear *bimodal* (two peaks). This is a simple indication of clustering, possibly due to sex differences. Obtain side-by-side boxplots of the male and female \verb!earconch! measurements. How do these measurement distributions differ? Can you predict what the corresponding histograms would look like? Plot them to check your answer.
 :::
 
-```{r ex7, echo=TRUE, eval=FALSE}
+```{r, eval=TRUE, echo=FALSE}
+#| label: ex7
+#| fig-width: 7
+#| fig-height: 3.5
 possum <- DAAG::possum
 par(mfrow=c(1,2), mar=c(4.1,4.1,1.6,0.6))
 hist(possum$earconch, main="")
 boxplot(earconch ~ sex, data=possum, horizontal=TRUE)
-par(mfrow=c(1,1))
 ```
 
-
-```{r fig.width=7, fig.height=3.5, echo=FALSE}
-<<ex7>>
+```{r, fig.width=7, fig.height=3.5, eval=FALSE, echo=TRUE}
+#| label: ex7
 ```
 
 The left panel shows a histogram of possum ear conch measurements.
@@ -109,7 +97,7 @@ histogram(~ earconch | sex, data=possum)
 
 Density plots, in addition to avoiding what has to be a largely arbitrary choice of cutpoints, are easy to overlay.
 
-```{r, eval=TRUE}
+```{r, ex7x, eval=TRUE}
 densityplot(~earconch, data=DAAG::possum, groups=sex, 
             auto.key=list(columns=2))
 ```
@@ -118,7 +106,6 @@ densityplot(~earconch, data=DAAG::possum, groups=sex,
 ::: {data-latex=""}
 Exercise 8
 :::
-
 For the data frame `ais` (*DAAG* package), draw graphs that show how the values of the hematological measures (red cell count, hemoglobin concentration, hematocrit, white cell count and plasma ferritin concentration) vary with the sport and sex of the athlete.
 :::
 

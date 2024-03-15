@@ -1,0 +1,208 @@
+---
+title: "Answers to Selected Chapter 8 Exercises"
+subtitle: "Tree-based Classification and Regression"
+date: "2024-03-15"
+output: 
+  html_document: default
+  pdf_document:
+    includes:
+      in_header: "preamble.tex"
+    latex_engine: xelatex
+---
+
+```{css, echo=F}
+.colbox {
+  padding: 1em;
+  background: white;
+  color: black;
+  border: 2px solid orange;
+  border-radius: 10px;
+}
+.center {
+  text-align: left;
+}
+}
+```
+
+```{r, echo=FALSE, include=FALSE}
+library(knitr)
+opts_chunk$set(fig.align='center', fig.show='hold', size="small", ps=10, 
+               out.width="80%", comment=NA, strip.white = TRUE,
+                    tidy.opts = list(replace.assign=FALSE))
+```
+
+```{r DAAG, echo=TRUE, quiet=TRUE, results='hide'}
+library(DAAG)
+library(rpart)
+```
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 1
+:::
+
+Refer to the `DAAG::headInjury` data frame.
+
+a.  Use the default setting in `rpart()` to obtain a tree-based model for predicting occurrence of clinically important brain injury, given the other variables.
+
+b.  How many splits gives the minimum cross-validation error?
+
+c.  Prune the tree using the 1 standard error rule.
+:::
+
+a.  
+
+```{r ex1a, echo=TRUE, fig.width=5, fig.height=5, ou.width='50%'}
+set.seed(29)         ## Gives the results presented here
+injury.rpart <- rpart(clinically.important.brain.injury ~ ., 
+                      data=headInjury, method="class", cp=0.0001)
+plotcp(injury.rpart)
+printcp(injury.rpart)
+```
+
+The setting `cp=0.0001` was reached after some experimentation.
+
+b.  The minimum cross-validated relative error is for `nsplit=3`, i.e., for a tree size of 4.
+
+c.  The one-standard-error rule likewise chooses `nsplit=3`, with `cp=0.014`. Setting `cp=0.02`, i.e., larger than `cp` for the next smallest number of splits, will prune the tree back to this size. We have
+
+```{r ex1c, echo=TRUE}
+injury0.rpart <- prune(injury.rpart, cp=0.02)
+```
+
+We plot the tree from (a) that shows the cross-validated relative error, and the tree obtained from (c).
+
+```{r, fig.width=7, fig.height=4, echo=FALSE, out.width='100%'}
+par(mfrow=c(1,2))
+plotcp(injury.rpart)
+plot(injury0.rpart)
+text(injury0.rpart)
+```
+
+Plots are from the `rpart` analysis of the head injury data: (i) cross-validated relative error versus `cp`; and (ii) the tree obtained in (c).
+
+There can be substantial change from one run to the next.
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 2
+:::
+
+The data set `mifem` is part of the larger data set in the data frame `monica` that we have included in our *DAAG* package. Use tree-based regression to predict mortality in this larger data set. What is the most immediately striking feature of your analysis? Should this be a surprise?
+:::
+
+```{r ex2, echo=TRUE}
+monica.rpart <- rpart(outcome ~ ., data=monica, method="class")
+```
+
+```{r fig.width=7, fig.height=3.5, echo=TRUE, out.width='100%'}
+plot(monica.rpart)
+text(monica.rpart)
+```
+
+Those who were not hospitalized were very likely to be dead! Check by examining the table:
+
+```{r echo=TRUE}
+table(monica$hosp, monica$outcome)
+```
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 3
+:::
+Use tree-based regression to predict `re78` in the data frame `nsw74pred1` that 
+is in our *DAAG* package. Compare the predictions with the multiple regression 
+predictions in Chapter 3.  [__Note:__ The reference to a regression calculation 
+in Chapter 3 is a mistake]
+:::
+
+In order to reproduce the same results as given here, do:
+
+```{r ex3, echo=TRUE}
+set.seed(21)
+```
+
+Code for the initial calculation is:
+
+```{r ex3-initial, echo=TRUE}
+nsw.rpart <- rpart(re78~., data=DAAG::nsw74psid1, cp=0.001)
+plotcp(nsw.rpart)
+```
+
+It is obvious that `cp=0.002` will be adequate. At this point, the following is a matter of convenience, to reduce the printed output:
+
+```{r ex3-prune, echo=TRUE}
+nsw.rpart <- prune(nsw.rpart, cp=0.002)
+printcp(nsw.rpart)
+```
+
+The minimum cross-validated relative error is at `nsplit=12`. The one standard error limit is 0.498 (=0.463+0.035). The one standard error rule suggests taking `nsplit=5`.
+
+If we go with the one standard error rule, we have a residual variance equal to 244284318 $\times$ 0.49177 = 120131699.
+
+For the estimate of residual variance from the calculations of Section 6.x, we do the following.
+
+```{r ex3-glm, echo=TRUE}
+attach(nsw74psid1)
+here <- age <= 40 & re74 <= 5000 & re75 <= 5000 & re78 < 30000
+nsw74psidA <- nsw74psid1[here, ]
+detach(nsw74psid1)
+A1.lm <- lm(re78 ~ trt + (age + educ + re74 + re75) + (black +
+      hisp + marr + nodeg), data = nsw74psidA)
+summary(A1.lm)$sigma^2
+```
+
+The variance estimate is 40177577. This is about a third of the
+variance estimate that was obtained with tree-based regression.
+
+::: {.colbox data-latex=""}
+::: {data-latex=""}
+Exercise 4
+:::
+The complete email spam dataset is available from 
+https://archive.ics.uci.edu/dataset/94/spambase or from the _bayesreg_ 
+package. Carry out a tree-based regression using all 57 available explanatory 
+variables.  Determine the change in the cross-validation estimate of 
+predictive accuracy.
+:::
+We set the random number seed to 21, to allow users to reproduce our results. In most other contexts, it will be best not to set a seed.
+
+```{r ex4, echo=TRUE}
+data('spambase', package='bayesreg')
+## For ease of labeling output, specify short names.  
+## Use the following, or do, e.g., nam <- c(paste0('v',1:57), 'yesno')
+nam <- c("make", "address", "all", "threeD", "our", "over", "remove", 
+"internet", "order", "mail", "receive", "will", "people", "report", 
+"addresses", "free", "business", "email", "you", "credit", "your", 
+"font", "n000", "money", "hp", "hpl", "george", "n650", "lab", 
+"labs", "telnet", "n857", "data", "n415", "n85", "technology", 
+"n1999", "parts", "pm", "direct", "cs", "meeting", "original", 
+"project", "re", "edu", "table", "conference", "semicolon", "leftparen", 
+"leftbrack", "bang", "dollar", "hash", "crl.av", "crl.long", 
+"crl.tot", "yesno")
+names(spambase) <- nam
+```
+
+Now load *rpart* and proceed with the calculations.
+
+```{r ex4-seed, echo=TRUE, eval=TRUE}
+set.seed(21)
+spam.rpart <- rpart(yesno~., data=spambase, cp=0.0001, method="class")
+printcp(spam.rpart)
+```
+
+Figure \@ref(spam) shows the plot of cross-validated relative error versus `cp`,
+for the full `spam` data set. For making a decision on the size of tree however, 
+it is convenient to work from the information given by the function `printcp()`.
+
+```{r, spam, fig.width=4.0, fig.height=3.5, echo=TRUE,  out.width='50%'}
+plotcp(spam.rpart)
+```
+Setting `cp=0.0001` ensures, when the random number seed is set to 21, that the cross-validated relative error reaches a minimum, of 0.1958, at `nsplit=43`. Pruning to get the tree that is likely to have best predictive power can use `cp=0.001`. Adding the SE to the minimum cross-validated relative error gives 0.2. The smallest tree with an SE smaller than this is at `nsplit=36`; setting `cp=0.0012` will give this tree.
+
+Here then are the two prunings:
+
+```{r echo=TRUE}
+spam.rpart1 <- prune(spam.rpart, cp=0.001)  # Minimum predicted error
+spam.rpart2 <- prune(spam.rpart, cp=0.0012) # 1 SE pruning
+```
