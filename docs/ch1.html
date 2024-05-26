@@ -362,23 +362,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)<span class="fu">print</span>(<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 7 6 1 5 2 4 3
-[1] 5 3 7 6 4 2 1
-[1] 4 2 7 1 6 5 3
-[1] 2 5 7 4 1 6 3</code></pre>
+<pre><code>[1] 2 6 1 3 4 7 5
+[1] 3 6 4 7 5 2 1
+[1] 3 2 7 5 1 6 4
+[1] 5 3 6 7 2 1 4</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Store results in the columns of a matrix</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="do">## The following is mildly cryptic</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>, <span class="cf">function</span>(x)<span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">7</span>))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4]
-[1,]    4    4    2    6
-[2,]    3    5    7    5
-[3,]    1    6    6    3
-[4,]    7    3    4    4
-[5,]    6    7    5    2
-[6,]    5    2    3    7
-[7,]    2    1    1    1</code></pre>
+[1,]    3    6    5    1
+[2,]    6    2    6    2
+[3,]    4    4    1    7
+[4,]    2    1    7    3
+[5,]    5    3    4    5
+[6,]    7    5    3    6
+[7,]    1    7    2    4</code></pre>
 </div>
 </div>
 <div class="colbox">
@@ -407,7 +407,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">mean=</span><span class="fu">mean</span>(x), <span class="at">variance=</span><span class="fu">var</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    mean variance 
-76.57143 36.95238 </code></pre>
+ 81.0000 155.3333 </code></pre>
 </div>
 </div>
 <p>It is unusual to get as big a difference between the mean and the variance as that observed for these data, making it doubtful that these data are from a Poisson distribution.</p>

@@ -110,51 +110,116 @@ table(monica$hosp, monica$outcome)
 ::: {data-latex=""}
 Exercise 3
 :::
-Use tree-based regression to predict `re78` in the data frame `nsw74pred1` that 
-is in our *DAAG* package. Compare the predictions with the multiple regression 
-predictions in Chapter 3.  [__Note:__ The reference to a regression calculation 
-in Chapter 3 is a mistake]
+> __Note:__ The second sentence of the exercise in the published text is a
+mistake.  There is no multiple regression example with this dataset
+in Chapter 3, or for that matter elsewhere in the text.  What follows 
+is a replacement for the existing exercise.
+
+Use `qqnorm()` to check differences from normality in `nsw74psid1::re78`.
+What do you notice?  Use tree-based regression to predict `re78`, and
+check differences from normality in the distribution of residuals.  
+What do you notice about the tails of the distribution?
+
+a. Use the function `car::powerTransform()` with `family='bcnPower'`
+to search for a transformation that will bring the distribution of
+`re78` closer to normality. Run summary on the output to get values
+(suitably rounded values are usually preferred) of `lambda` and `gamma` 
+that you can then supply as arguments to `car::bcnPower()` to obtain
+transformed values `tran78` of `re78`.  Use `qqnorm()` with the 
+transformed data to compare its distribution with a normal distribution.
+The distribution should now be much closer to normal, making the choice
+of splits that maximize the between-groups sum-of-squares sums of 
+squares about the mean a more optimal procedure.
+
+b. Use tree-based regression to predict `tran78`, and
+check differences from normality in the distribution of residuals.
+What do you now notice about the tails of the distribution?
+What are the variable importance ranks i) if the tree is chosen
+that gives the minimum cross-validated error; ii) if the tree
+is chosen following the one standard error criterion?  In each
+case, calculate the cross-validated relative error.
+
+c. Do a random forest fit to the transformed data, and compare 
+the bootstrap error with then cross-validated error from the 
+`rpart` fits. 
 :::
 
 In order to reproduce the same results as given here, do:
 
 ```{r ex3, echo=TRUE}
-set.seed(21)
+set.seed(41)
 ```
 
-Code for the initial calculation is:
+Code is:
 
 ```{r ex3-initial, echo=TRUE}
-nsw.rpart <- rpart(re78~., data=DAAG::nsw74psid1, cp=0.001)
-plotcp(nsw.rpart)
+re78.rpart <- rpart(re78~., data=DAAG::nsw74psid1, cp=0.001)
+plotcp(re78.rpart)
 ```
 
-It is obvious that `cp=0.002` will be adequate. At this point, the following is a matter of convenience, to reduce the printed output:
+It is obvious that `cp=0.0025` will be adequate. At this point, the following is a matter of convenience, to reduce the printed output:
 
 ```{r ex3-prune, echo=TRUE}
-nsw.rpart <- prune(nsw.rpart, cp=0.002)
-printcp(nsw.rpart)
+re78.rpart2 <- prune(re78.rpart, cp=0.0025)
+printcp(re78.rpart2)
+```
+To minimize the cross-validated relative error, prune back
+to 9 splits.  Thus e.g., set `cp=0.0038`.
+
+We could prune before comparing the distribution of residuals
+to that for a normal distribution.  However, that would make
+little difference to the pattern that we now see.  Interested
+readers may care to check.
+
+```{r check-resids, echo=TRUE}
+res <- resid(re78.rpart2)
+qqnorm(res)
 ```
 
-The minimum cross-validated relative error is at `nsplit=12`. The one standard error limit is 0.498 (=0.463+0.035). The one standard error rule suggests taking `nsplit=5`.
+The distribution of residuals is highly log-tailed, at both ends of the
+distribution.  This makes the standard deviation an unsatisfactory measure of variation.  
 
-If we go with the one standard error rule, we have a residual variance equal to 244284318 $\times$ 0.49177 = 120131699.
 
-For the estimate of residual variance from the calculations of Section 6.x, we do the following.
+a. The `car::bcnPower` transformation can be used for an initial
+transformation of `re78` that provides a better starting point for the
+tree-based regression.
 
-```{r ex3-glm, echo=TRUE}
-attach(nsw74psid1)
-here <- age <= 40 & re74 <= 5000 & re75 <= 5000 & re78 < 30000
-nsw74psidA <- nsw74psid1[here, ]
-detach(nsw74psid1)
-A1.lm <- lm(re78 ~ trt + (age + educ + re74 + re75) + (black +
-      hisp + marr + nodeg), data = nsw74psidA)
-summary(A1.lm)$sigma^2
+```{r bcn}
+set.seed(41)
+p2 <- car::powerTransform(nsw74psid1$re78, family='bcnPower') 
+summary(p2)
+tran78 <- car::bcnPower(nsw74psid1$re78, lambda=0.33, gamma=8000)
+tran78a.rpart <- rpart(tran78~., data=DAAG::nsw74psid1[,-10], cp=0.002)
+printcp(tran78a.rpart)
+```
+The minimum cross-validated relative error is at `nsplit=21`. The one standard error limit is 0.477 (=0.45478 +0.022676, round to 3 d.p.). The one standard error rule suggests taking `nsplit=6`.
+```{r prune-6}
+tran78se.rpart <- prune(tran78a.rpart, cp=0.0065)   ## 1 SE rule
+tran78.rpart <- prune(tran78a.rpart, cp=0.0021)     ## Min xval rel error
+res <- resid(tran78se.rpart)
+qqnorm(res)
+```
+The long tails have now gone.
+
+Note that the root node error is given as 192.99.
+The cross-validated errors for the two trees are, rounded to one decimal place:
+
+* One SE rule: `round(192.99*.46697,1) = 90.1`
+* Minimum cross-validated error: `round(192.99*0.45739,1) = 88.3`
+
+c.
+
+```{r rf-tran78}
+library(randomForest)
+tran78.rf <- randomForest(y=tran78, x=DAAG::nsw74psid1[,-10])
+tran78.rf
 ```
 
-The variance estimate is 40177577. This is about a third of the
-variance estimate that was obtained with tree-based regression.
-
+The mean of the squared residuals is given as 
+`r tran78.rf$mse[length(tran78.rf$mse)]`.  This is substantially 
+larger than either of the cross-validated errors that are given
+above from the tree created using `rpart()`. With only a small
+number of variables used in tree construction, 
 ::: {.colbox data-latex=""}
 ::: {data-latex=""}
 Exercise 4

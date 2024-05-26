@@ -492,11 +492,11 @@ Model 1: arch ~ (logwid + loglen + logpet) + latitude
 Model 2: arch ~ (logwid + loglen + logpet) * latitude
 Model 3: arch ~ (logwid + loglen + logpet) + location
 Model 4: arch ~ (logwid + loglen + logpet) * location
-  Resid. Df Resid. Dev Df Deviance
-1       281     193.31            
-2       278     187.78  3    5.530
-3       277     186.30  1    1.481
-4       262     148.00 15   38.298</code></pre>
+  Resid. Df Resid. Dev Df Deviance  Pr(&gt;Chi)
+1       281     193.31                      
+2       278     187.78  3    5.530 0.1368635
+3       277     186.30  1    1.481 0.2235601
+4       262     148.00 15   38.298 0.0008151</code></pre>
 </div>
 </div>
 <p>It may however, in view of uncertainty about the adequacy of the asymptotic chi-squared approximation for the deviance changes, be better to fit the models using <code>lda()</code>, and choose the model that has the smallest cross-validated relative error:</p>
@@ -518,7 +518,7 @@ Model 4: arch ~ (logwid + loglen + logpet) * location
 <span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a><span class="fu">cbind</span>(t1,t2,t3,t4) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>    0  1   0  1   0  1   0  1
-0 173 19 177 15 179 13 177 15
+0 174 18 177 15 179 13 177 15
 1  24 70  24 70  22 72  24 70</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate leave-one-out cross-validation predictive accuracy estimates</span></span>
@@ -532,19 +532,21 @@ Model 4: arch ~ (logwid + loglen + logpet) * location
 <p>Note that leave-one-out cross-validation gives the same result each time that the calculation is run. (How so?)</p>
 <p>In all four tables, the totals of the rowsums are the totals for the respective architectures. Thus:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">list</span>(<span class="at">one=</span>t1,<span class="at">two=</span>t2,<span class="at">three=</span>t3,<span class="at">four=</span>t4), </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>       <span class="cf">function</span>(x)<span class="fu">apply</span>(x,<span class="dv">1</span>,sum))  <span class="do">## Same number each time</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Row sums - numbers for the two architectures</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">list</span>(<span class="at">one=</span>t1,<span class="at">two=</span>t2,<span class="at">three=</span>t3,<span class="at">four=</span>t4), </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>       <span class="cf">function</span>(x)<span class="fu">apply</span>(x,<span class="dv">1</span>,sum))  <span class="do">## Same number each time</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  one two three four
 0 192 192   192  192
 1  94  94    94   94</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">list</span>(<span class="at">one=</span>t1,<span class="at">two=</span>t2,<span class="at">three=</span>t3,<span class="at">four=</span>t4), </span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>       <span class="cf">function</span>(x)<span class="fu">apply</span>(x,<span class="dv">2</span>,sum))  <span class="do">## All are not the same</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Column sums - predicted numbers for the two architectures</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sapply</span>(<span class="fu">list</span>(<span class="at">one=</span>t1,<span class="at">two=</span>t2,<span class="at">three=</span>t3,<span class="at">four=</span>t4), </span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>       <span class="cf">function</span>(x)<span class="fu">apply</span>(x,<span class="dv">2</span>,sum))  <span class="do">## All are not the same</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  one two three four
-0 197 201   201  201
-1  89  85    85   85</code></pre>
+0 198 201   201  201
+1  88  85    85   85</code></pre>
 </div>
 </div>
 <p>The following improves the labeling when the tables for the four models are shown side by side:</p>
@@ -561,7 +563,7 @@ Model 4: arch ~ (logwid + loglen + logpet) * location
 <pre><code>           one     two     three     four    
      class   0   1   0   1     0   1    0   1
 arch                                         
-0          173  19 177  15   179  13  177  15
+0          174  18 177  15   179  13  177  15
 1           24  70  24  70    22  72   24  70</code></pre>
 </div>
 </div>

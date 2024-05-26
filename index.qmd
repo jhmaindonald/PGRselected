@@ -1,8 +1,8 @@
 # Preface {.unnumbered}
 
-This website makes available solutions to selected exercises
-from the new Cambridge University Press text, due to appear 
-in published form in May or June 2024:
+This document gives solutions to selected exercises from
+the new Cambridge University Press text, due to be
+published in May or June 2024:
 
 > "A Practical Guide to Data Analysis Using R -- An Example-Based Approach",
 > by John H Maindonald, W John Braun, and Jeffrey L Andrews.

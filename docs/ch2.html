@@ -460,7 +460,7 @@ common odds ratio
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4789830 0.7139753</code></pre>
+<pre><code>[1] 0.4696480 0.7064424</code></pre>
 </div>
 </div>
 <div class="colbox">
@@ -485,7 +485,7 @@ common odds ratio
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">density</span>(z, <span class="at">from=</span><span class="dv">0</span>), <span class="at">main=</span><span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Notice the use of the argument <code>from=0</code>, to prevent <code>density()</code> from giving a positive density estimate to negative values.</p>
-<p>Compare <code>mean(z)</code> = 5.49 with 1/0.2 = 5.</p>
+<p>Compare <code>mean(z)</code> = 5.32 with 1/0.2 = 5.</p>
 <div class="colbox">
 <div data-latex="">
 <p>Exercise 7</p>
@@ -524,16 +524,16 @@ common odds ratio
 <span id="cb23-28"><a href="#cb23-28" aria-hidden="true" tabindex="-1"></a><span class="fu">Welch.pooled.comparison</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Welch.proportion.correct pooled.proportion.correct          Welch.length.avg 
-                  0.94100                   0.89000                  82.81857 
+                  0.95600                   0.90200                  83.00547 
         pooled.length.avg 
-                 61.98452 </code></pre>
+                 61.94738 </code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Welch.pooled.comparison</span>(<span class="at">sd1=</span><span class="dv">40</span>, <span class="at">sd2=</span><span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Welch.proportion.correct pooled.proportion.correct          Welch.length.avg 
-                  0.94000                   0.93900                  71.86132 
+                  0.95000                   0.95800                  71.46374 
         pooled.length.avg 
-                 68.56197 </code></pre>
+                 68.33807 </code></pre>
 </div>
 </div>
 <div class="colbox">

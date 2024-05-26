@@ -253,8 +253,10 @@ result each time that the calculation is run. (How so?)
 In all four tables, the totals of the rowsums are the
 totals for the respective architectures. Thus:
 ```{r}
+## Row sums - numbers for the two architectures
 sapply(list(one=t1,two=t2,three=t3,four=t4), 
        function(x)apply(x,1,sum))  ## Same number each time
+## Column sums - predicted numbers for the two architectures
 sapply(list(one=t1,two=t2,three=t3,four=t4), 
        function(x)apply(x,2,sum))  ## All are not the same
 ```
